@@ -22,7 +22,7 @@ public abstract class BookStoreDataBase extends RoomDatabase {
                     context.getApplicationContext(),
                     BookStoreDataBase.class,
                     db_name
-            ).fallbackToDestructiveMigration().build();
+            ).allowMainThreadQueries().build();
         }
         return instance;
     }
