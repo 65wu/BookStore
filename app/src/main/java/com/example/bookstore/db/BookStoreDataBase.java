@@ -7,6 +7,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.bookstore.dao.BookDao;
+import com.example.bookstore.dao.CategoryDao;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
 
@@ -28,4 +29,5 @@ public abstract class BookStoreDataBase extends RoomDatabase {
     }
 
     public abstract BookDao bookDao();
+    public abstract CategoryDao categoryDao();
 }

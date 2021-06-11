@@ -3,6 +3,8 @@ package com.example.bookstore;
 import android.os.Bundle;
 
 import com.example.bookstore.db.BookStoreDataBase;
+import com.example.bookstore.entity.Book;
+import com.example.bookstore.entity.Category;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,15 +15,16 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.bookstore.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.Collections;
+import java.util.List;
 
-    private ActivityMainBinding binding;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        com.example.bookstore.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -35,7 +38,10 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
+        Category c = new Category(1, "现代文学");
+        Book[] books = {new Book("书名", "描述", "作者", 1)};
+        appDb.categoryDao().insertCategory(c);
+        appDb.bookDao().insertBook(books);
         appDb.bookDao().getAllBooks();
     }
-
 }
