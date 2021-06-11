@@ -15,9 +15,6 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.bookstore.databinding.ActivityMainBinding;
 
-import java.util.Collections;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override
