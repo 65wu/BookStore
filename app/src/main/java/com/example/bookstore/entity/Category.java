@@ -10,4 +10,9 @@ public class Category {
     private int id;
     @ColumnInfo(name = "name")
     private String name;
+
+
+    public Category(String name) {
+        this.name = name;
+    }
 }
