@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/loginParent"
     android:orientation="vertical"
-    tools:context="com.example.bookstore.ui.LoginActivity">
+    tools:context="com.example.bookstore.ui.RegisterActivity">
 
     <ScrollView style="@style/parent">
 
@@ -47,7 +47,7 @@
                     android:layout_marginTop="40dp"
                     android:text="Book Store" />
 
-                <include layout="@layout/layout_login" />
+                <include layout="@layout/layout_register"/>
 
             </LinearLayout>
 

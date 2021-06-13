@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
-//        appDb.clearAllTables();
 //        Category c = new Category(1, "现代文学");
 //        Book[] books = {new Book("书名", "描述", "作者", 1)};
 //        appDb.categoryDao().insertCategory(c);
