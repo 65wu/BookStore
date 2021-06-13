@@ -8,6 +8,6 @@
 5. 结合SERVICE 播放 书城的相关介绍视频
 ### 相关技术
 + ListView简单应用
-+ Romm(orm sqlite)
++ Room(orm sqlite)
 + http通信
 + handler thread
