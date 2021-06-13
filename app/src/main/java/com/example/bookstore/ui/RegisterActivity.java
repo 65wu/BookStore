@@ -1,8 +1,10 @@
-package com.example.bookstore;
+package com.example.bookstore.ui;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.bookstore.R;
 
 import org.jetbrains.annotations.NotNull;
 
