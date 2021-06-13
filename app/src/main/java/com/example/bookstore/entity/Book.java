@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "book",
         foreignKeys = {@ForeignKey(entity = Category.class,
-        parentColumns = "id",
-        childColumns = "category_id",
-        onDelete = ForeignKey.CASCADE)})
+                parentColumns = "id",
+                childColumns = "category_id",
+                onDelete = ForeignKey.CASCADE)})
 public class Book {
     @PrimaryKey(autoGenerate = true)
     private int id;

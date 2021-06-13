@@ -14,14 +14,19 @@ import java.util.List;
 public interface BookDao {
     @Query("Select * from book")
     List<Book> getAllBooks();
+
     @Query("Select * from book where category_id = :category_id")
     List<Book> getBooksByCategory(int category_id);
+
     @Query("Select * from book where author = :author")
     List<Book> getBooksByAuthor(String author);
+
     @Insert
     void insertBook(Book... book);
+
     @Update
     void updateBook(Book... book);
+
     @Delete
     void deleteBook(Book... book);
 }

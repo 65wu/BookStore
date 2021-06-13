@@ -14,12 +14,16 @@ import java.util.List;
 public interface CategoryDao {
     @Query("Select * from category")
     List<Category> getAllCategories();
+
     @Query("Select * from category where id = :category_id")
     List<Category> getCategoriesById(int category_id);
+
     @Insert
     void insertCategory(Category... category);
+
     @Update
     void updateCategory(Category... category);
+
     @Delete
     void deleteCategory(Category... category);
 }
