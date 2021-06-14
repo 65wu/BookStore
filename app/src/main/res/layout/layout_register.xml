@@ -25,9 +25,11 @@
 
             <EditText
                 style="@style/modifiedEditText"
-                android:hint="Name"
+                android:id="@+id/username"
+                android:hint="@string/name"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:autofillHints="" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -36,9 +38,11 @@
 
             <EditText
                 style="@style/modifiedEditText"
-                android:hint="Mobile Number"
+                android:id="@+id/mobile_number"
+                android:hint="@string/mobile_number"
                 android:inputType="text"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:autofillHints="" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -47,9 +51,11 @@
 
             <EditText
                 style="@style/modifiedEditText"
+                android:id="@+id/email"
                 android:hint="@string/login_email_hint"
                 android:inputType="textEmailAddress"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:autofillHints="" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -58,15 +64,18 @@
 
             <EditText
                 style="@style/modifiedEditText"
+                android:id="@+id/password"
                 android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:autofillHints="" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             style="@style/loginButton"
+            android:id="@+id/registerButton"
             android:layout_gravity="center"
-            android:text="Register" />
+            android:text="@string/register" />
 
         <TextView
             style="@style/parent"
