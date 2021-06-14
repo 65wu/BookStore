@@ -58,7 +58,10 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT,
                         true).show();
             }
-            public void onComplete() {}
+            public void onComplete() {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
         };
         
         layoutLogin.cirLoginButton.setOnClickListener(view -> {
