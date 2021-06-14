@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         com.example.bookstore.databinding.ActivityLoginBinding binding = com.example.bookstore.databinding.ActivityLoginBinding.inflate(getLayoutInflater());
         com.example.bookstore.databinding.LayoutLoginBinding layoutLogin = binding.layoutLogin;
         setContentView(binding.getRoot());
-
+        
         // 观察者
         Observer<AVUser> o = new Observer<AVUser>() {
             public void onSubscribe(@NotNull Disposable disposable) {}
@@ -60,8 +60,16 @@ public class LoginActivity extends AppCompatActivity {
             }
             public void onComplete() {}
         };
-
-        AVUser.logIn("66wu", "123456").subscribe(o);
+        
+        layoutLogin.cirLoginButton.setOnClickListener(view -> {
+            String email = layoutLogin.editTextEmail.getText().toString();
+            String password = layoutLogin.editTextPassword.getText().toString();
+            if(isEmail(email)) {
+                AVUser.loginByEmail(email, password).subscribe(o);
+            } else {
+                AVUser.logIn(email, password).subscribe(o);
+            }
+        });
     }
 
     public void viewRegisterClicked(View view) {
