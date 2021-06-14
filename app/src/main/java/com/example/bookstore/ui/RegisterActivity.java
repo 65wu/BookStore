@@ -8,7 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookstore.R;
-import com.example.bookstore.databinding.LayoutRegisterBinding;
+import com.example.bookstore.databinding.ActivityRegisterBinding;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,20 +18,20 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class RegisterActivity extends AppCompatActivity {
-    private com.example.bookstore.databinding.LayoutRegisterBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        binding = LayoutRegisterBinding.inflate(getLayoutInflater());
+        com.example.bookstore.databinding.ActivityRegisterBinding binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        com.example.bookstore.databinding.LayoutRegisterBinding layoutRegister = binding.layoutRegister;
         setContentView(binding.getRoot());
 
-        binding.registerButton.setOnClickListener(view -> {
-            String username = binding.username.getText().toString();
-            String mobile_number = binding.mobileNumber.getText().toString();
-            String email = binding.email.getText().toString();
-            String password = binding.password.getText().toString();
+        layoutRegister.registerButton.setOnClickListener(view -> {
+            String username = layoutRegister.username.getText().toString();
+            String mobile_number = layoutRegister.mobileNumber.getText().toString();
+            String email = layoutRegister.email.getText().toString();
+            String password = layoutRegister.password.getText().toString();
 
             AVUser user = new AVUser();
             user.setUsername(username);
