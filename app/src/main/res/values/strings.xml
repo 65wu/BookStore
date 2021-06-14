@@ -12,4 +12,8 @@
     <string name="name">Name</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="login_background">login background</string>
+    <string name="no_internet">No Internet</string>
+    <string name="please_check_your_connection_status_and_try_again">Please check your connection status and try again</string>
+    <string name="close">Close</string>
+    <string name="no_internet_image">无网络</string>
 </resources>
