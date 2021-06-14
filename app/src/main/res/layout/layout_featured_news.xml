@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/selectableItemBackground">
+
+    <TextView
+        style="@style/viewParent.headerText"
+        android:textSize="16sp"
+        android:text="@string/google_s_new_free_app_teaches_kids_nto_read_by_listening_to_them"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/image_featured_news" />
+
+    <TextView
+        style="@style/miniTitle"
+        android:maxLines="2"
+        android:textColor="@color/featuredNewsContentColor"
+        android:layout_marginTop="5dp"
+        android:text="@string/google_has_just_ripped_the_beta_label_off_rivet_its_nfree_mobile_app_designed_to_help_young_children_learn_to_read"/>
+</LinearLayout>

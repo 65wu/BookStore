@@ -1,0 +1,54 @@
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_marginTop="40dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/newsThumbnailImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/img_thumbnail"/>
+
+    <TextView
+        android:id="@+id/newsTitleTextView"
+        style="@style/viewParent.headerText"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/newsThumbnailImageView"
+        android:textSize="15sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="@string/back_to_beige_decoding_this_nseason_s_most_unlikely_of_the"/>
+
+    <TextView
+        android:id="@+id/newsDetailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/featuredNewsContentColor"
+        android:layout_toEndOf="@id/newsThumbnailImageView"
+        android:layout_below="@id/newsTitleTextView"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="5dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="@string/as_far_as_trends_go_you_d_be_forgiven_nfor_assuming_that_beige_equals_boring"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/_1_hrs_ago"
+        android:layout_alignParentBottom="true"
+        android:textColor="#8E909A"
+        android:textSize="12sp"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/newsThumbnailImageView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/read_more"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="#019AE8"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
+</RelativeLayout>
