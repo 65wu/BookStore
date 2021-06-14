@@ -40,8 +40,8 @@ public class LoginActivity extends AppCompatActivity {
                         "登录成功。",
                         Toast.LENGTH_SHORT,
                         true).show();
-//                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }
             public void onError(@NotNull Throwable throwable) {
                 // 登录失败（可能是密码错误）
