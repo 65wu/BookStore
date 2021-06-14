@@ -45,7 +45,7 @@
                     style="@style/headerText"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
-                    android:text="Book Store" />
+                    android:text="@string/login_background"/>
 
                 <include
                     layout="@layout/layout_register"
