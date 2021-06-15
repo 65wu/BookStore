@@ -36,28 +36,28 @@ public class BottomNavigationBehavior extends CoordinatorLayout.Behavior<BottomN
         return nestedScrollAxes == ViewCompat.SCROLL_AXIS_VERTICAL;
     }
 
-    @Override
-    public void onNestedPreScroll(
-            @NotNull CoordinatorLayout coordinatorLayout,
-            @NotNull BottomNavigationView child,
-            @NotNull View target,
-            int dx,
-            int dy,
-            @NotNull int[] consumed,
-            int i
-    ) {
-        if (dy < 0) {
-            showBottomNavigationView(child);
-        } else if (dy > 0) {
-            hideBottomNavigationView(child);
-        }
-    }
-
-    private void hideBottomNavigationView(BottomNavigationView view) {
-        view.animate().translationY(view.getHeight());
-    }
-
-    private void showBottomNavigationView(BottomNavigationView view) {
-        view.animate().translationY(0);
-    }
+//    @Override
+//    public void onNestedPreScroll(
+//            @NotNull CoordinatorLayout coordinatorLayout,
+//            @NotNull BottomNavigationView child,
+//            @NotNull View target,
+//            int dx,
+//            int dy,
+//            @NotNull int[] consumed,
+//            int i
+//    ) {
+//        if (dy < 0) {
+//            showBottomNavigationView(child);
+//        } else if (dy > 0) {
+//            hideBottomNavigationView(child);
+//        }
+//    }
+//
+//    private void hideBottomNavigationView(BottomNavigationView view) {
+//        view.animate().translationY(view.getHeight());
+//    }
+//
+//    private void showBottomNavigationView(BottomNavigationView view) {
+//        view.animate().translationY(0);
+//    }
 }

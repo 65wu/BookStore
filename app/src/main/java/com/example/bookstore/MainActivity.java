@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 Toolbar toolbar = findViewById(R.id.toolbar);
                 setSupportActionBar(toolbar);
 
+                // 装载RecycleView
                 RecyclerView recyclerView = findViewById(R.id.books_list);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(this);
                 recyclerView.setLayoutManager(layoutManager);

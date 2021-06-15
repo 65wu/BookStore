@@ -3,27 +3,27 @@
 
     <item
         android:id="@+id/navigationMenu"
-        android:icon="@android:drawable/ic_menu_sort_by_size"
-        android:title="Menu" />
+        android:icon="@drawable/ic_menu_app"
+        android:title="菜单" />
 
     <item
         android:id="@+id/navigationMyCourses"
-        android:icon="@drawable/ic_effort"
-        android:title="Courses" />
+        android:icon="@drawable/ic_door_open"
+        android:title="逛逛" />
 
     <item
         android:id="@+id/navigationHome"
-        android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:icon="@drawable/ic_house"
+        android:title="主页" />
 
     <item
         android:id="@+id/navigationSearch"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="Search" />
+        android:icon="@drawable/ic_search"
+        android:title="搜索" />
 
     <item
         android:id="@+id/navigationMyProfile"
-        android:icon="@drawable/ic_user"
-        android:title="User" />
+        android:icon="@drawable/ic_person"
+        android:title="用户" />
 
 </menu>
