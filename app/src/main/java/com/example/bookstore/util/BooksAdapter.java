@@ -8,61 +8,65 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.bookstore.R;
 import com.example.bookstore.entity.Book;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 
-public class BooksAdapter extends BaseAdapter {
-    private final List<Book> mData;
-    private final Context mContext;
+public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> {
+    private final Context context;
+    private final List<Book> booksList;
 
-    static class ViewHolder {
-        private ImageView book_image;
-        private TextView book_name;
-        private TextView book_description;
-        private TextView book_author;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView book_image;
+        private final TextView book_name;
+        private final TextView book_description;
+        private final TextView book_author;
+
+        public ViewHolder (View view) {
+            super(view);
+
+            book_image = view.findViewById(R.id.booksThumbnailImageView);
+            book_name = view.findViewById(R.id.booksTitleTextView);
+            book_description = view.findViewById(R.id.booksDetailTextView);
+            book_author = view.findViewById(R.id.booksAuthorTextView);
+        }
     }
 
-    public BooksAdapter(List<Book> mData, Context mContext) {
-        this.mData = mData;
-        this.mContext = mContext;
-    }
-
-    @Override
-    public int getCount() {
-        return mData.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return mData.get(position);
+    public BooksAdapter(List<Book> booksList, Context context) {
+        this.booksList = booksList;
+        this.context = context;
     }
 
     @Override
     public long getItemId(int position) {
-        return mData.get(position).getId();
+        return booksList.get(position).getId();
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder mViewHolder;
-        if(convertView == null) {
-            mViewHolder = new ViewHolder();
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.layout_books, parent,false);
-            mViewHolder.book_image = convertView.findViewById(R.id.booksThumbnailImageView);
-            mViewHolder.book_name = convertView.findViewById(R.id.booksTitleTextView);
-            mViewHolder.book_description = convertView.findViewById(R.id.booksDetailTextView);
-            mViewHolder.book_author = convertView.findViewById(R.id.booksAuthorTextView);
-        } else {
-            mViewHolder = (ViewHolder)convertView.getTag();
-        }
+    public int getItemCount(){
+        return booksList.size();
+    }
 
-        mViewHolder.book_image.setImageBitmap(new FileHelper().loadImageBitmap(
-                    mContext, mData.get(position).getId() + ""));
-        mViewHolder.book_name.setText(mData.get(position).getName());
-        mViewHolder.book_description.setText(mData.get(position).getDescription());
-        mViewHolder.book_author.setText(mData.get(position).getAuthor());
-        return convertView;
+
+    @NotNull
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_books, parent,false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position){
+        Book book = booksList.get(position);
+        holder.book_image.setImageBitmap(new FileHelper().loadImageBitmap(
+                context, book.getId() + ""));
+        holder.book_name.setText(book.getName());
+        holder.book_description.setText(book.getDescription());
+        holder.book_author.setText(book.getAuthor());
     }
 }

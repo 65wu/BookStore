@@ -13,10 +13,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.db.BookStoreDataBase;
+import com.example.bookstore.entity.Book;
+import com.example.bookstore.entity.Category;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
+import com.example.bookstore.util.BooksAdapter;
 import com.example.bookstore.util.BottomNavigationBehavior;
 import com.example.bookstore.util.NetworkUtil;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -30,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
+//        Category c = new Category(1, "现代文学");
+//        Book[] books = new Book[10];
+//        appDb.categoryDao().insertCategory(c);
+//        for(int i = 0; i < 10; i++) {
+//            books[i] = new Book("书名" + i, "描述" + i, "作者" + i, 1);
+//        }
+//        appDb.bookDao().insertBook(books);
+
         super.onCreate(savedInstanceState);
         if(NetworkUtil.isOnline(this)) {
             AVUser currentUser = AVUser.getCurrentUser();
@@ -37,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_main);
                 Toolbar toolbar = findViewById(R.id.toolbar);
                 setSupportActionBar(toolbar);
+
+                RecyclerView recyclerView = findViewById(R.id.books_list);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+                recyclerView.setLayoutManager(layoutManager);
+                BooksAdapter adapter = new BooksAdapter(appDb.bookDao().getAllBooks(), this);
+                recyclerView.setAdapter(adapter);
 
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -70,12 +90,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, NoInternetActivity.class);
             startActivity(intent);
         }
-//        BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
-//        Category c = new Category(1, "现代文学");
-//        Book[] books = {new Book("书名", "描述", "作者", 1)};
-//        appDb.categoryDao().insertCategory(c);
-//        appDb.bookDao().insertBook(books);
-//        appDb.bookDao().getAllBooks();
     }
     private final BottomNavigationView.OnNavigationItemSelectedListener bottomNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override

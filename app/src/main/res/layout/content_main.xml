@@ -70,23 +70,11 @@
 
             <!--replace with recycler view-->
 
-
-            <include
-                layout="@layout/layout_books"/>
-
-            <include
-                layout="@layout/layout_books"/>
-
-            <include
-                layout="@layout/layout_books"/>
-
-            <include
-                layout="@layout/layout_books"/>
-            <include
-                layout="@layout/layout_books"/>
-
-            <include
-                layout="@layout/layout_books"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/books_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </androidx.recyclerview.widget.RecyclerView>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
