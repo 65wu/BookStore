@@ -3,6 +3,8 @@ package com.example.bookstore;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -36,19 +38,23 @@ public class MainActivity extends AppCompatActivity {
                 Toolbar toolbar = findViewById(R.id.toolbar);
                 setSupportActionBar(toolbar);
 
-
                 DrawerLayout drawer = findViewById(R.id.drawer_layout);
                 ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                         this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
                 drawer.addDrawerListener(toggle);
                 toggle.syncState();
-
                 NavigationView navigationView = findViewById(R.id.nav_view);
                 navigationView.setNavigationItemSelectedListener(navigationItemSelectedListener);
 
+                View appBarMainBinding = navigationView.getHeaderView(0);
+                TextView nav_username = appBarMainBinding.findViewById(R.id.nav_username);
+                TextView nav_email = appBarMainBinding.findViewById(R.id.nav_email);
+                nav_username.setText(currentUser.getUsername());
+                nav_email.setText(currentUser.getEmail());
+
                 BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
                 bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavigationItemSelectedListener);
-//
+
                 CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
                 layoutParams.setBehavior(new BottomNavigationBehavior());
 
