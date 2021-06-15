@@ -14,6 +14,7 @@ public class RecyclerviewLoader {
     public RecyclerviewLoader(Context context) {
         this.context = context;
     }
+    // 装载RecycleView
     public void loadBooksRecycleView(RecyclerView recyclerView, List<Book> bookList) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);

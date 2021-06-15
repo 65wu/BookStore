@@ -70,5 +70,4 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         holder.book_description.setText(book.getDescription());
         holder.book_author.setText(book.getAuthor());
     }
-    // 装载RecycleView
 }
