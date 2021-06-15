@@ -32,10 +32,13 @@ import org.jetbrains.annotations.NotNull;
 import cn.leancloud.AVUser;
 
 public class MainActivity extends AppCompatActivity {
+    private BookStoreDataBase appDb;
+    private AVUser currentUser;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
+        appDb = BookStoreDataBase.getInstance(this);
 //        Category c = new Category(1, "现代文学");
 //        Book[] books = new Book[10];
 //        appDb.categoryDao().insertCategory(c);
@@ -46,41 +49,14 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         if(NetworkUtil.isOnline(this)) {
-            AVUser currentUser = AVUser.getCurrentUser();
+            currentUser = AVUser.getCurrentUser();
             if (currentUser != null) {
                 setContentView(R.layout.activity_main);
-                Toolbar toolbar = findViewById(R.id.toolbar);
+                toolbar = findViewById(R.id.toolbar);
                 setSupportActionBar(toolbar);
 
-                // 装载RecycleView
-                RecyclerView recyclerView = findViewById(R.id.books_list);
-                LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-                recyclerView.setLayoutManager(layoutManager);
-                BooksAdapter adapter = new BooksAdapter(appDb.bookDao().getAllBooks(), this);
-                recyclerView.setAdapter(adapter);
-
-                DrawerLayout drawer = findViewById(R.id.drawer_layout);
-                ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                        this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-                drawer.addDrawerListener(toggle);
-                toggle.syncState();
-                NavigationView navigationView = findViewById(R.id.nav_view);
-                navigationView.setNavigationItemSelectedListener(navigationItemSelectedListener);
-
-                // 载入当前用户的用户名与邮箱
-                View appBarMainBinding = navigationView.getHeaderView(0);
-                TextView nav_username = appBarMainBinding.findViewById(R.id.nav_username);
-                TextView nav_email = appBarMainBinding.findViewById(R.id.nav_email);
-                nav_username.setText(currentUser.getUsername());
-                nav_email.setText(currentUser.getEmail());
-
-                BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
-                bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavigationItemSelectedListener);
-
-                CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
-                layoutParams.setBehavior(new BottomNavigationBehavior());
-
-                bottomNavigationView.setSelectedItemId(R.id.navigationHome);
+                loadRecycleView();
+                initParts();
             } else {
                 // 跳到登录页面
                 Intent intent = new Intent(this, LoginActivity.class);
@@ -115,4 +91,38 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    private void loadRecycleView() {
+        // 装载RecycleView
+        RecyclerView recyclerView = findViewById(R.id.books_list);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        BooksAdapter adapter = new BooksAdapter(appDb.bookDao().getAllBooks(), this);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void initParts() {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(navigationItemSelectedListener);
+
+        // 载入当前用户的用户名与邮箱
+        View appBarMainBinding = navigationView.getHeaderView(0);
+        TextView nav_username = appBarMainBinding.findViewById(R.id.nav_username);
+        TextView nav_email = appBarMainBinding.findViewById(R.id.nav_email);
+        nav_username.setText(currentUser.getUsername());
+        nav_email.setText(currentUser.getEmail());
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(bottomNavigationItemSelectedListener);
+
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) bottomNavigationView.getLayoutParams();
+        layoutParams.setBehavior(new BottomNavigationBehavior());
+
+        bottomNavigationView.setSelectedItemId(R.id.navigationHome);
+    }
 }
