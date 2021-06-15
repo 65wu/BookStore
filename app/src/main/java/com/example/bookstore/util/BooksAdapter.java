@@ -64,7 +64,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, int position){
         Book book = booksList.get(position);
         holder.book_image.setImageBitmap(new FileHelper().loadImageBitmap(
-                context, book.getId() + ""));
+                context, "book", book.getId() + ""));
         holder.book_name.setText(book.getName());
         holder.book_description.setText(book.getDescription());
         holder.book_author.setText(book.getAuthor());

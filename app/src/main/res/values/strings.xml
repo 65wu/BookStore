@@ -20,7 +20,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="text_hint"><b>Search Latest News...</b></string>
+    <string name="text_hint"><b>搜索最新图书</b></string>
+    <string name="search"><b>搜索</b></string>
     <string name="google_s_new_free_app_teaches_kids_nto_read_by_listening_to_them">Google’s new free app teaches kids \nto read by listening to them</string>
     <string name="google_has_just_ripped_the_beta_label_off_rivet_its_nfree_mobile_app_designed_to_help_young_children_learn_to_read">Google has just ripped the beta label off Rivet, its \nfree mobile app designed to help young children learn to read.</string>
     <string name="back_to_beige_decoding_this_nseason_s_most_unlikely_of_the">Back to beige: decoding this \nseason’s most unlikely, of the</string>

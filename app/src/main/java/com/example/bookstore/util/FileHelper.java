@@ -20,12 +20,12 @@ public class FileHelper {
             e.printStackTrace();
         }
     }
-    public Bitmap loadImageBitmap(Context context,String name){
-        name = name + ".png";
+    public Bitmap loadImageBitmap(Context context,String type, String id){
+        id = type + "_" + id + ".png";
         FileInputStream fileInputStream;
         Bitmap bitmap = null;
         try{
-            fileInputStream = context.openFileInput(name);
+            fileInputStream = context.openFileInput(id);
             bitmap = BitmapFactory.decodeStream(fileInputStream);
             fileInputStream.close();
         } catch(Exception e) {
