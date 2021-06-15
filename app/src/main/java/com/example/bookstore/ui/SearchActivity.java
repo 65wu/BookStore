@@ -21,7 +21,7 @@ public class SearchActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String input = intent.getStringExtra("input");
         recyclerviewLoader.loadBooksRecycleView(
-                findViewById(R.id.books_list),
+                findViewById(R.id.search_result),
                 appDb.bookDao().getBooksByAuthor(input));
     }
 }
