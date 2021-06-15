@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 NavigationView navigationView = findViewById(R.id.nav_view);
                 navigationView.setNavigationItemSelectedListener(navigationItemSelectedListener);
 
+                // 载入当前用户的用户名与邮箱
                 View appBarMainBinding = navigationView.getHeaderView(0);
                 TextView nav_username = appBarMainBinding.findViewById(R.id.nav_username);
                 TextView nav_email = appBarMainBinding.findViewById(R.id.nav_email);

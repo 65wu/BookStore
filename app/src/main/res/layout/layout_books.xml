@@ -4,28 +4,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
-        android:id="@+id/newsThumbnailImageView"
+        android:id="@+id/booksThumbnailImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/img_thumbnail"/>
 
     <TextView
-        android:id="@+id/newsTitleTextView"
+        android:id="@+id/booksTitleTextView"
         style="@style/viewParent.headerText"
         android:layout_marginStart="5dp"
-        android:layout_toEndOf="@id/newsThumbnailImageView"
+        android:layout_toEndOf="@id/booksThumbnailImageView"
         android:textSize="15sp"
         android:maxLines="2"
         android:ellipsize="end"
         android:text="@string/back_to_beige_decoding_this_nseason_s_most_unlikely_of_the"/>
 
     <TextView
-        android:id="@+id/newsDetailTextView"
+        android:id="@+id/booksDetailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/featuredNewsContentColor"
-        android:layout_toEndOf="@id/newsThumbnailImageView"
-        android:layout_below="@id/newsTitleTextView"
+        android:textColor="@color/featuredBooksContentColor"
+        android:layout_toEndOf="@id/booksThumbnailImageView"
+        android:layout_below="@id/booksTitleTextView"
         android:layout_marginTop="5dp"
         android:layout_marginStart="5dp"
         android:maxLines="2"
@@ -33,14 +33,15 @@
         android:text="@string/as_far_as_trends_go_you_d_be_forgiven_nfor_assuming_that_beige_equals_boring"/>
 
     <TextView
+        android:id="@+id/booksAuthorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/_1_hrs_ago"
+        android:text="@string/author"
         android:layout_alignParentBottom="true"
         android:textColor="#8E909A"
         android:textSize="12sp"
         android:layout_marginStart="5dp"
-        android:layout_toEndOf="@id/newsThumbnailImageView"/>
+        android:layout_toEndOf="@id/booksThumbnailImageView"/>
 
     <TextView
         android:layout_width="wrap_content"

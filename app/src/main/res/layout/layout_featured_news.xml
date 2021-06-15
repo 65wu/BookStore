@@ -20,7 +20,7 @@
     <TextView
         style="@style/miniTitle"
         android:maxLines="2"
-        android:textColor="@color/featuredNewsContentColor"
+        android:textColor="@color/featuredBooksContentColor"
         android:layout_marginTop="5dp"
         android:text="@string/google_has_just_ripped_the_beta_label_off_rivet_its_nfree_mobile_app_designed_to_help_young_children_learn_to_read"/>
 </LinearLayout>

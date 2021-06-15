@@ -62,10 +62,6 @@
 
                 <include
                     layout="@layout/layout_topics"/>
-
-                <include
-                    layout="@layout/layout_topics"/>
-
             </LinearLayout>
             
             <!--replace with recycler view-->
@@ -76,21 +72,21 @@
 
 
             <include
-                layout="@layout/layout_news"/>
+                layout="@layout/layout_books"/>
 
             <include
-                layout="@layout/layout_news"/>
+                layout="@layout/layout_books"/>
 
             <include
-                layout="@layout/layout_news"/>
+                layout="@layout/layout_books"/>
 
             <include
-                layout="@layout/layout_news"/>
+                layout="@layout/layout_books"/>
             <include
-                layout="@layout/layout_news"/>
+                layout="@layout/layout_books"/>
 
             <include
-                layout="@layout/layout_news"/>
+                layout="@layout/layout_books"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
