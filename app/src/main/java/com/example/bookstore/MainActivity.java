@@ -13,17 +13,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
-import com.example.bookstore.util.BooksAdapter;
 import com.example.bookstore.util.BottomNavigationBehavior;
 import com.example.bookstore.util.NetworkUtil;
+import com.example.bookstore.util.RecyclerviewLoader;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -32,13 +30,12 @@ import org.jetbrains.annotations.NotNull;
 import cn.leancloud.AVUser;
 
 public class MainActivity extends AppCompatActivity {
-    private BookStoreDataBase appDb;
     private AVUser currentUser;
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        appDb = BookStoreDataBase.getInstance(this);
+        BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
 //        Category c = new Category(1, "现代文学");
 //        Book[] books = new Book[10];
 //        appDb.categoryDao().insertCategory(c);
@@ -55,7 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 toolbar = findViewById(R.id.toolbar);
                 setSupportActionBar(toolbar);
 
-                loadRecycleView();
+                new RecyclerviewLoader(this).loadBooksRecycleView(
+                        findViewById(R.id.books_list),
+                        appDb.bookDao().getAllBooks());
                 initParts();
             } else {
                 // 跳到登录页面
@@ -68,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
     private final BottomNavigationView.OnNavigationItemSelectedListener bottomNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
@@ -91,15 +91,6 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
-
-    private void loadRecycleView() {
-        // 装载RecycleView
-        RecyclerView recyclerView = findViewById(R.id.books_list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        BooksAdapter adapter = new BooksAdapter(appDb.bookDao().getAllBooks(), this);
-        recyclerView.setAdapter(adapter);
-    }
 
     private void initParts() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
