@@ -57,10 +57,7 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.books_list),
                         appDb.bookDao().getAllBooks());
                 initParts();
-                searchButtonClick.onClick(
-                        findViewById(R.id.search_button),
-                        findViewById(R.id.search_input)
-                );
+                searchButtonClick.onClick(getWindow().getDecorView());
             } else {
                 // 跳到登录页面
                 Intent intent = new Intent(this, LoginActivity.class);

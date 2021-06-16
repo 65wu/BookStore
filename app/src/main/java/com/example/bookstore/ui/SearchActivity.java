@@ -18,10 +18,7 @@ public class SearchActivity extends AppCompatActivity {
         BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        searchButtonClick.onClick(
-                findViewById(R.id.search_button),
-                findViewById(R.id.search_input)
-        );
+        searchButtonClick.onClick(getWindow().getDecorView());
 
         Intent intent = getIntent();
         String input = intent.getStringExtra("input");
