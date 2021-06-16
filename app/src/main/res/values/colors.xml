@@ -32,6 +32,6 @@
     <color name="imageBorderColor">#1F5BF3</color>
     <color name="miniTitle">#2A2E43</color>
     <color name="featuredBooksContentColor">#8E909A</color>
-    <color name="bottomNavigationTintColor">#6c757d</color>
-    <color name="bottomNavigationSelectedColor">#212529</color>
+    <color name="bottomNavigationIconColor">#29B6F6</color>
+    <color name="bottomNavigationTextColor">#03A9F4</color>
 </resources>
