@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.bookstore.db.BookStoreDataBase;
+import com.example.bookstore.entity.Category;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
 import com.example.bookstore.ui.SearchButtonClick;
@@ -31,18 +32,19 @@ import cn.leancloud.AVUser;
 public class MainActivity extends AppCompatActivity {
     private AVUser currentUser;
     private Toolbar toolbar;
+    private BookStoreDataBase appDb;
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
     private final SearchButtonClick searchButtonClick = new SearchButtonClick(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
-//        Category c = new Category(1, "现代文学");
+        appDb = BookStoreDataBase.getInstance(this);
+//        Category[] c = new Category[10];
 //        Book[] books = new Book[10];
-//        appDb.categoryDao().insertCategory(c);
 //        for(int i = 0; i < 10; i++) {
-//            books[i] = new Book("书名" + i, "描述" + i, "作者" + i, 1);
+//            c[i] = new Category(2 + i, "现代文学" + i);
 //        }
+//        appDb.categoryDao().insertCategory(c);
 //        appDb.bookDao().insertBook(books);
 
         super.onCreate(savedInstanceState);
@@ -52,10 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_main);
                 toolbar = findViewById(R.id.toolbar);
                 setSupportActionBar(toolbar);
-
-                recyclerviewLoader.loadBooksRecycleView(
-                        findViewById(R.id.books_list),
-                        appDb.bookDao().getAllBooks());
+                initRecyclerView();
                 initParts();
                 searchButtonClick.onClick(getWindow().getDecorView());
             } else {
@@ -93,6 +92,16 @@ public class MainActivity extends AppCompatActivity {
             return false;
         }
     };
+
+    private void initRecyclerView() {
+        recyclerviewLoader.loadBooksRecycleView(
+                findViewById(R.id.books_list),
+                appDb.bookDao().getAllBooks());
+        recyclerviewLoader.loadCategoriesRecycleView(
+                findViewById(R.id.categories_list),
+                appDb.categoryDao().getAllCategories()
+        );
+    }
 
     private void initParts() {
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
