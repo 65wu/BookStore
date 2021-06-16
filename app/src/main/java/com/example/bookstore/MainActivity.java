@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.navigationHome);
     }
 
+    // 用户登出
     public void logout(MenuItem menuItem) {
         AVUser.logOut();
         Intent intent = new Intent(this, LoginActivity.class);

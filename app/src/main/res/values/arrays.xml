@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="questions">
+        <item>
+            文学
+        </item>
+        <item>
+            小说
+        </item>
+        <item>
+            人文社科
+        </item>
+        <item>
+            科技
+        </item>
+    </string-array>
+</resources>

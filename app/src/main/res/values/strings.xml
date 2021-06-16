@@ -33,4 +33,5 @@
     <string name="add_category">添加图书类别</string>
     <string name="share">分享</string>
     <string name="log_out">登出</string>
+    <string name="category_text">图书类别</string>
 </resources>
