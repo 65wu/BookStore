@@ -12,11 +12,16 @@ import com.example.bookstore.util.RecyclerviewLoader;
 
 public class SearchActivity extends AppCompatActivity {
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
+    private final SearchButtonClick searchButtonClick = new SearchButtonClick(this);
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        searchButtonClick.onClick(
+                findViewById(R.id.search_button),
+                findViewById(R.id.search_input)
+        );
 
         Intent intent = getIntent();
         String input = intent.getStringExtra("input");

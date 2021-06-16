@@ -4,11 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -19,11 +15,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.bookstore.db.BookStoreDataBase;
-import com.example.bookstore.entity.Book;
-import com.example.bookstore.entity.Category;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
-import com.example.bookstore.ui.SearchActivity;
+import com.example.bookstore.ui.SearchButtonClick;
 import com.example.bookstore.util.BottomNavigationBehavior;
 import com.example.bookstore.util.NetworkUtil;
 import com.example.bookstore.util.RecyclerviewLoader;
@@ -33,12 +27,12 @@ import com.google.android.material.navigation.NavigationView;
 import org.jetbrains.annotations.NotNull;
 
 import cn.leancloud.AVUser;
-import es.dmoral.toasty.Toasty;
 
 public class MainActivity extends AppCompatActivity {
     private AVUser currentUser;
     private Toolbar toolbar;
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
+    private final SearchButtonClick searchButtonClick = new SearchButtonClick(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +57,10 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.books_list),
                         appDb.bookDao().getAllBooks());
                 initParts();
-                bindSearch();
+                searchButtonClick.onClick(
+                        findViewById(R.id.search_button),
+                        findViewById(R.id.search_input)
+                );
             } else {
                 // 跳到登录页面
                 Intent intent = new Intent(this, LoginActivity.class);
@@ -123,27 +120,5 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.setBehavior(new BottomNavigationBehavior());
 
         bottomNavigationView.setSelectedItemId(R.id.navigationHome);
-    }
-
-    // 搜索按钮绑定
-    private void bindSearch() {
-        Button search_button = findViewById(R.id.search_button);
-        EditText search_input = findViewById(R.id.search_input);
-
-        search_button.setOnClickListener(view -> {
-            // 跳转到搜索结果界面
-            Intent intent = new Intent(this, SearchActivity.class);
-            String input = search_input.getText().toString();
-            intent.putExtra("input", input);
-            if(!input.isEmpty()) {
-                startActivity(intent);
-            } else {
-                Toasty.error(
-                        getApplicationContext(),
-                        "输入不能为空",
-                        Toast.LENGTH_SHORT,
-                        true).show();
-            }
-        });
     }
 }
