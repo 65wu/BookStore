@@ -126,4 +126,10 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.setSelectedItemId(R.id.navigationHome);
     }
+
+    public void logout(MenuItem menuItem) {
+        AVUser.logOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }
