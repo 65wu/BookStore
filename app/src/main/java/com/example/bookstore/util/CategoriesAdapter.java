@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,15 +18,19 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder>{
     private final Context context;
     private final List<Category> categoryList;
     static class ViewHolder extends RecyclerView.ViewHolder {
+        private final LinearLayout category;
         private final ImageView category_image;
         private final TextView category_name;
 
         public ViewHolder (View view) {
             super(view);
+            category = view.findViewById(R.id.category);
             category_image = view.findViewById(R.id.category_image);
             category_name = view.findViewById(R.id.category_name);
         }
@@ -58,5 +64,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         holder.category_image.setImageBitmap(new FileHelper().loadImageBitmap(
                 context, "category", category.getId() + ""));
         holder.category_name.setText(category.getName());
+
+        holder.category.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toasty.success(context,
+                        "点击书籍种类测试",
+                        Toast.LENGTH_SHORT,
+                        true).show();
+            }
+        });
     }
 }
