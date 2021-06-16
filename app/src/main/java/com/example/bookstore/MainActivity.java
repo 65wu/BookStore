@@ -13,13 +13,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.db.BookStoreDataBase;
-import com.example.bookstore.entity.Category;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
-import com.example.bookstore.ui.SearchButtonClick;
+import com.example.bookstore.util.SearchButtonClick;
 import com.example.bookstore.util.BottomNavigationBehavior;
 import com.example.bookstore.util.NetworkUtil;
 import com.example.bookstore.util.RecyclerviewLoader;
@@ -57,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 setSupportActionBar(toolbar);
                 initRecyclerView();
                 initParts();
-                searchButtonClick.onClick(getWindow().getDecorView());
+                searchButtonClick.authorSearch(getWindow().getDecorView());
             } else {
                 // 跳到登录页面
                 Intent intent = new Intent(this, LoginActivity.class);

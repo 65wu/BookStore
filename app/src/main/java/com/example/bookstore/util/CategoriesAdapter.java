@@ -1,6 +1,7 @@
 package com.example.bookstore.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.R;
+import com.example.bookstore.ui.SearchActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -23,6 +25,7 @@ import es.dmoral.toasty.Toasty;
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder>{
     private final Context context;
     private final List<Category> categoryList;
+
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final LinearLayout category;
         private final ImageView category_image;
@@ -68,10 +71,10 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
         holder.category.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toasty.success(context,
-                        "点击书籍种类测试",
-                        Toast.LENGTH_SHORT,
-                        true).show();
+                Intent intent = new Intent(context, SearchActivity.class);
+                intent.putExtra("type", "category");
+                intent.putExtra("value", category.getId() + "");
+                context.startActivity(intent);
             }
         });
     }

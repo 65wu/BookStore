@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bookstore.R;
 import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.util.RecyclerviewLoader;
+import com.example.bookstore.util.SearchButtonClick;
 
 public class SearchActivity extends AppCompatActivity {
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
@@ -18,12 +19,19 @@ public class SearchActivity extends AppCompatActivity {
         BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        searchButtonClick.onClick(getWindow().getDecorView());
+        searchButtonClick.authorSearch(getWindow().getDecorView());
 
         Intent intent = getIntent();
-        String input = intent.getStringExtra("input");
-        recyclerviewLoader.loadBooksRecycleView(
-                findViewById(R.id.search_result),
-                appDb.bookDao().getBooksByAuthor(input));
+        String type = intent.getStringExtra("type");
+        String value = intent.getStringExtra("value");
+        if(type.equals("author")) {
+            recyclerviewLoader.loadBooksRecycleView(
+                    findViewById(R.id.search_result),
+                    appDb.bookDao().getBooksByAuthor(value));
+        } else if(type.equals("category")) {
+            recyclerviewLoader.loadBooksRecycleView(
+                    findViewById(R.id.search_result),
+                    appDb.bookDao().getBooksByCategory(Integer.parseInt(value)));
+        }
     }
 }
