@@ -3,7 +3,7 @@
     android:layout_marginTop="10dp"
     android:layout_marginStart="12dp"
     android:layout_marginEnd="12dp"
-    android:background="@drawable/background_border"
+    android:background="@drawable/ic_background_book_border"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
