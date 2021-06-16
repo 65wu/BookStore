@@ -1,55 +1,47 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_marginTop="40dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:background="@drawable/background_border"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
         android:id="@+id/booksThumbnailImageView"
-        android:layout_width="100dp"
+        android:layout_width="84dp"
         android:layout_height="100dp"
-        android:src="@drawable/img_thumbnail"/>
+        android:paddingStart="8dp"
+        android:paddingEnd="0dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:src="@drawable/img_thumbnail" />
+
 
     <TextView
         android:id="@+id/booksTitleTextView"
         style="@style/viewParent.headerText"
-        android:layout_marginStart="5dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="4dp"
         android:layout_toEndOf="@id/booksThumbnailImageView"
-        android:textSize="15sp"
-        android:maxLines="2"
         android:ellipsize="end"
-        android:text="@string/back_to_beige_decoding_this_nseason_s_most_unlikely_of_the"/>
-
-    <TextView
-        android:id="@+id/booksDetailTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/featuredBooksContentColor"
-        android:layout_toEndOf="@id/booksThumbnailImageView"
-        android:layout_below="@id/booksTitleTextView"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"
         android:maxLines="2"
-        android:ellipsize="end"
-        android:text="@string/as_far_as_trends_go_you_d_be_forgiven_nfor_assuming_that_beige_equals_boring"/>
+        android:singleLine="true"
+        android:text="@string/back_to_beige_decoding_this_nseason_s_most_unlikely_of_the"
+        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/booksAuthorTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/author"
+        android:layout_below="@+id/booksTitleTextView"
         android:layout_alignParentBottom="true"
-        android:textColor="#8E909A"
-        android:textSize="12sp"
-        android:layout_marginStart="5dp"
-        android:layout_toEndOf="@id/booksThumbnailImageView"/>
+        android:layout_marginStart="8dp"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/read_more"
-        android:textStyle="bold"
-        android:textSize="12sp"
-        android:textColor="#019AE8"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"/>
+        android:layout_toEndOf="@id/booksThumbnailImageView"
+        android:text="@string/author"
+        android:textColor="#8E909A"
+        android:textSize="12sp" />
 </RelativeLayout>

@@ -23,7 +23,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final ImageView book_image;
         private final TextView book_name;
-        private final TextView book_description;
         private final TextView book_author;
 
         public ViewHolder (View view) {
@@ -31,7 +30,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
 
             book_image = view.findViewById(R.id.booksThumbnailImageView);
             book_name = view.findViewById(R.id.booksTitleTextView);
-            book_description = view.findViewById(R.id.booksDetailTextView);
             book_author = view.findViewById(R.id.booksAuthorTextView);
         }
     }
@@ -65,7 +63,6 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
         holder.book_image.setImageBitmap(new FileHelper().loadImageBitmap(
                 context, "book", book.getId() + ""));
         holder.book_name.setText(book.getName());
-        holder.book_description.setText(book.getDescription());
         holder.book_author.setText(book.getAuthor());
     }
 }
