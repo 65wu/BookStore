@@ -6,45 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.BooksAddActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:layout_marginStart="-15dp"
-            android:layout_marginTop="-15dp"
-            android:layout_marginEnd="-15dp"
-            app:cardElevation="10dp"
-            app:cardUseCompatPadding="true">
-
-            <ImageView
-                android:id="@+id/back_to_main_activity"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
-                android:layout_marginStart="4dp"
-                android:padding="18dp"
-                android:src="@drawable/ic_back"
-                app:tint="@color/bottomNavigationIconColor" />
-
-            <TextView
-                android:id="@+id/top_bar_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="4dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="测试测试"
-                android:textColor="#424242"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-        </androidx.cardview.widget.CardView>
-    </RelativeLayout>
-
+    <include layout="@layout/layout_top_bar"/>
 
     <LinearLayout
         android:layout_width="match_parent"

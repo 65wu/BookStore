@@ -21,6 +21,7 @@ import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.util.FileHelper;
+import com.example.bookstore.util.TopBarCustomer;
 import com.skydoves.powerspinner.OnSpinnerItemSelectedListener;
 import com.skydoves.powerspinner.PowerSpinnerView;
 
@@ -40,6 +41,7 @@ public class BooksAddActivity extends AppCompatActivity {
     private final List<String> categoriesNameList = new ArrayList<>();
     private final HashMap<String, Integer> categoriesMap = new HashMap<>();
     private final FileHelper fileHelper = new FileHelper();
+    private final TopBarCustomer topBarCustomer = new TopBarCustomer(this, "添加新图书");
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -47,17 +49,7 @@ public class BooksAddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
-        ImageView back_home = findViewById(R.id.back_to_main_activity);
-        back_home.bringToFront();
-        back_home.setClickable(true);
-        back_home.setOnClickListener(view -> {
-            Toasty.success(getApplicationContext(),
-                    "点击成功。",
-                    Toast.LENGTH_SHORT,
-                    true).show();
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        });
+        topBarCustomer.init(getWindow().getDecorView());
 
         categoriesParse();
         PowerSpinnerView powerSpinnerView = findViewById(R.id.spinner_book_category);

@@ -12,6 +12,7 @@
         android:layout_marginTop="-15dp"
         app:cardElevation="10dp">
         <ImageView
+            android:id="@+id/back_home_image"
             android:layout_marginStart="4dp"
             android:layout_width="75dp"
             android:layout_height="75dp"
@@ -19,10 +20,10 @@
             android:src="@drawable/ic_back"
             app:tint="@color/bottomNavigationIconColor"/>
         <TextView
+            android:id="@+id/top_bar_text"
             android:layout_marginStart="4dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="添加新图书"
             android:textColor="#424242"
             android:textSize="22sp"
             android:textStyle="bold"
