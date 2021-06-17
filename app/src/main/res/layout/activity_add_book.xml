@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.BooksAddActivity">
+    <include layout="@layout/layout_top_bar"/>
     <com.skydoves.powerspinner.PowerSpinnerView
         android:id="@+id/spinner_book_category"
         android:layout_width="match_parent"
@@ -14,6 +15,7 @@
         android:background="@color/primaryTextColor"
         android:gravity="center"
         android:hint="@string/category_text"
+        android:layout_marginTop="80dp"
         android:padding="10dp"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
