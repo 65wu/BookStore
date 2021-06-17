@@ -18,9 +18,6 @@ public interface CategoryDao {
     @Query("Select * from category where id = :category_id")
     List<Category> getCategoriesById(int category_id);
 
-    @Query("Select name from category")
-    List<String> getAllCategoriesName();
-
     @Insert
     void insertCategory(Category... category);
 
