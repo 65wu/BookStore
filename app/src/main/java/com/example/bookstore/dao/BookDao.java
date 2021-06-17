@@ -22,7 +22,7 @@ public interface BookDao {
     List<Book> getBooksByAuthor(String author);
 
     @Insert
-    void insertBook(Book... book);
+    List<Long> insertBook(Book... book);
 
     @Update
     void updateBook(Book... book);

@@ -19,7 +19,7 @@ public interface CategoryDao {
     List<Category> getCategoriesById(int category_id);
 
     @Insert
-    void insertCategory(Category... category);
+    List<Long> insertCategory(Category... category);
 
     @Update
     void updateCategory(Category... category);
