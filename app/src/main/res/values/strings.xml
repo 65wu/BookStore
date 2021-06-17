@@ -34,4 +34,8 @@
     <string name="share">分享</string>
     <string name="log_out">登出</string>
     <string name="category_text">图书类别</string>
+    <string name="add_book_name_text">书名</string>
+    <string name="add_book_author_text">作者</string>
+    <string name="add_book_description_text">描述</string>
+    <string name="add_book_image_text">添加图书图片</string>
 </resources>
