@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -72,14 +71,19 @@ public class BooksAddActivity extends AppCompatActivity {
                         category_id
                 )).get(0);
                 fileHelper.saveImage(BooksAddActivity.this, selectedImage, "book", category_id + "");
-                Intent refresh = new Intent(BooksAddActivity.this, MainActivity.class);
-                startActivity(refresh);
+                Toasty.success(getApplicationContext(),
+                        "添加新图书成功。",
+                        Toast.LENGTH_SHORT,
+                        true).show();
+                Intent intent = new Intent(BooksAddActivity.this, MainActivity.class);
+                startActivity(intent);
                 finish();
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
     }
+    // 图书种类id与图书种类名双向绑定
     private void categoriesParse() {
         List<Category> categoryList = appDb.categoryDao().getAllCategories();
         for(Category c: categoryList) {
@@ -88,6 +92,7 @@ public class BooksAddActivity extends AppCompatActivity {
         }
     }
 
+    // 读取相册图片
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {
         super.onActivityResult(reqCode, resultCode, data);
@@ -102,6 +107,7 @@ public class BooksAddActivity extends AppCompatActivity {
             }
         }
     }
+    // 在相册界面切回app时更新图片
     @Override
     public void onResume() {
         super.onResume();
