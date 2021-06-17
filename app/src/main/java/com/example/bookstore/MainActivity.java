@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.bookstore.db.BookStoreDataBase;
+import com.example.bookstore.ui.BookCategoriesAddActivity;
 import com.example.bookstore.ui.BooksAddActivity;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
@@ -135,8 +136,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void addNewBoos(MenuItem menuItem) {
+    public void addNewBooks(MenuItem menuItem) {
         Intent intent = new Intent(this, BooksAddActivity.class);
+        startActivity(intent);
+    }
+
+    public void addNewBookCategory(MenuItem menuItem) {
+        Intent intent = new Intent(this, BookCategoriesAddActivity.class);
         startActivity(intent);
     }
 }

@@ -5,11 +5,9 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -22,47 +20,27 @@ import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.util.FileHelper;
 import com.example.bookstore.util.TopBarCustomer;
-import com.skydoves.powerspinner.OnSpinnerItemSelectedListener;
-import com.skydoves.powerspinner.PowerSpinnerView;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
-public class BooksAddActivity extends AppCompatActivity {
-    Integer category_id;
+public class BookCategoriesAddActivity extends AppCompatActivity {
     private ImageView image_button;
-    private BookStoreDataBase appDb;
     private Bitmap selectedImage = null;
-    private final List<String> categoriesNameList = new ArrayList<>();
-    private final HashMap<String, Integer> categoriesMap = new HashMap<>();
     private final FileHelper fileHelper = new FileHelper();
-    private final TopBarCustomer topBarCustomer = new TopBarCustomer(this, "添加新图书");
-
+    private final TopBarCustomer topBarCustomer = new TopBarCustomer(this, "添加新图书类别");
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        appDb = BookStoreDataBase.getInstance(this);
+        BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_book);
+        setContentView(R.layout.activity_add_book_category);
 
         topBarCustomer.init(getWindow().getDecorView());
-
-        categoriesParse();
-        PowerSpinnerView powerSpinnerView = findViewById(R.id.spinner_book_category);
-        powerSpinnerView.setItems(categoriesNameList);
-        powerSpinnerView.setOnSpinnerItemSelectedListener((OnSpinnerItemSelectedListener<String>) (oldIndex, oldItem, newIndex, newItem) -> {
-            category_id = categoriesMap.get(newItem);
-        });
-
-        image_button = findViewById(R.id.add_image_button);
-        Button submit_button = findViewById(R.id.add_new_book_button);
-        EditText book_name = findViewById(R.id.new_book_name);
-        EditText book_author = findViewById(R.id.new_book_author);
-        EditText book_description = findViewById(R.id.new_book_description);
+        image_button = findViewById(R.id.add_image_category_button);
+        EditText category_name = findViewById(R.id.new_book_category_name);
+        Button submit_button = findViewById(R.id.add_new_book_category_button);
 
         image_button.setOnClickListener(v -> {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -71,18 +49,15 @@ public class BooksAddActivity extends AppCompatActivity {
 
         submit_button.setOnClickListener(v -> {
             try {
-                Long book_id = appDb.bookDao().insertBook(new Book(
-                        book_name.getText().toString(),
-                        book_description.getText().toString(),
-                        book_author.getText().toString(),
-                        category_id
+                Long category_id = appDb.categoryDao().insertCategory(new Category(
+                        category_name.getText().toString()
                 )).get(0);
-                fileHelper.saveImage(BooksAddActivity.this, selectedImage, "book", book_id + "");
+                fileHelper.saveImage(BookCategoriesAddActivity.this, selectedImage, "category", category_id + "");
                 Toasty.success(getApplicationContext(),
-                        "添加新图书成功。",
+                        "添加新图书类别成功。",
                         Toast.LENGTH_SHORT,
                         true).show();
-                Intent intent = new Intent(BooksAddActivity.this, MainActivity.class);
+                Intent intent = new Intent(BookCategoriesAddActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             } catch (Exception e) {
@@ -90,15 +65,6 @@ public class BooksAddActivity extends AppCompatActivity {
             }
         });
     }
-    // 图书种类id与图书种类名双向绑定
-    private void categoriesParse() {
-        List<Category> categoryList = appDb.categoryDao().getAllCategories();
-        for(Category c: categoryList) {
-            categoriesNameList.add(c.getName());
-            categoriesMap.put(c.getName(), c.getId());
-        }
-    }
-
     // 读取相册图片
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {

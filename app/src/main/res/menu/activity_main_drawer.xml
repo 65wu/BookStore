@@ -7,11 +7,12 @@
         <item
             android:id="@+id/nav_add_book"
             android:icon="@drawable/ic_book"
-            android:onClick="addNewBoos"
+            android:onClick="addNewBooks"
             android:title="@string/add_book"/>
         <item
             android:id="@+id/nav_add_book_category"
             android:icon="@drawable/ic_book_category"
+            android:onClick="addNewBookCategory"
             android:title="@string/add_category" />
         <item
             android:id="@+id/nav_share"
