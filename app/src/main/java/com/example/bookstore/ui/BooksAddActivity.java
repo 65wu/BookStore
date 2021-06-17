@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -44,6 +46,19 @@ public class BooksAddActivity extends AppCompatActivity {
         appDb = BookStoreDataBase.getInstance(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
+
+        ImageView back_home = findViewById(R.id.back_to_main_activity);
+        back_home.bringToFront();
+        back_home.setClickable(true);
+        back_home.setOnClickListener(view -> {
+            Toasty.success(getApplicationContext(),
+                    "点击成功。",
+                    Toast.LENGTH_SHORT,
+                    true).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        });
+
         categoriesParse();
         PowerSpinnerView powerSpinnerView = findViewById(R.id.spinner_book_category);
         powerSpinnerView.setItems(categoriesNameList);
