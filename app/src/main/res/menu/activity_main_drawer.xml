@@ -7,6 +7,7 @@
         <item
             android:id="@+id/nav_add_book"
             android:icon="@drawable/ic_book"
+            android:onClick="addNewBoos"
             android:title="@string/add_book"/>
         <item
             android:id="@+id/nav_add_book_category"
