@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bookstore.MainActivity;
 import com.example.bookstore.R;
 import com.example.bookstore.db.BookStoreDataBase;
-import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.util.FileHelper;
 import com.example.bookstore.util.TopBarCustomer;

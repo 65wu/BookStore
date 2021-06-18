@@ -41,4 +41,5 @@
     <string name="add_book_image_text">添加图书图片</string>
     <string name="add_book__category_image_text">添加图书类别图片</string>
     <string name="create">创建</string>
+    <string name="comment">评论</string>
 </resources>
