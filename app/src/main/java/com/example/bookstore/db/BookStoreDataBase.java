@@ -5,14 +5,19 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
 import com.example.bookstore.dao.BookDao;
 import com.example.bookstore.dao.CategoryDao;
+import com.example.bookstore.dao.CommentDao;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
+import com.example.bookstore.entity.Comment;
+import com.example.bookstore.util.DateConverters;
 
 
-@Database(entities = {Book.class, Category.class}, version = 1, exportSchema = false)
+@Database(entities = {Book.class, Category.class, Comment.class}, version = 1, exportSchema = false)
+@TypeConverters({DateConverters.class})
 public abstract class BookStoreDataBase extends RoomDatabase {
     private static final String db_name = "book_store";
     private static BookStoreDataBase instance;
@@ -31,4 +36,6 @@ public abstract class BookStoreDataBase extends RoomDatabase {
     public abstract BookDao bookDao();
 
     public abstract CategoryDao categoryDao();
+
+    public abstract CommentDao commentDao();
 }
