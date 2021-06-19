@@ -60,11 +60,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     public void onBindViewHolder(CommentsAdapter.ViewHolder holder, int position){
         Comment comment = commentList.get(position);
         holder.username.setText(comment.getUsername());
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        String date = formatter.format(comment.getSend_date());
-        holder.send_date.setText(date);
-
+        holder.send_date.setText(DateConverters.getFormatDate(comment.getSend_date()));
         holder.content.setText(comment.getContent());
     }
 }

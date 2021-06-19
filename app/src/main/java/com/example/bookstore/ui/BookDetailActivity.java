@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,8 +22,10 @@ import com.example.bookstore.entity.Comment;
 import com.example.bookstore.util.FileHelper;
 import com.example.bookstore.util.RecyclerviewLoader;
 
+import java.util.Date;
 import java.util.List;
 
+import cn.leancloud.AVUser;
 import es.dmoral.toasty.Toasty;
 
 public class BookDetailActivity extends AppCompatActivity {
@@ -31,6 +34,7 @@ public class BookDetailActivity extends AppCompatActivity {
     String book_author;
     String book_description;
     Integer book_category_id;
+    Intent intent;
     AlertDialog.Builder builder;
     BookStoreDataBase appDb;
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
@@ -41,7 +45,7 @@ public class BookDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_detail);
         builder = new AlertDialog.Builder(this);
 
-        Intent intent = getIntent();
+        intent = getIntent();
         book_id = intent.getStringExtra("book_id");
         book_name = intent.getStringExtra("book_name");
         book_author = intent.getStringExtra("book_author");
@@ -106,5 +110,24 @@ public class BookDetailActivity extends AppCompatActivity {
         alert.show();
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#03A9F4"));
         alert.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#03A9F4"));
+    }
+    // 发表评论
+    public void send_comment(View view) {
+        String username = AVUser.getCurrentUser().getUsername();
+        EditText send_comment_content = findViewById(R.id.send_comment_content);
+        String comment_content = send_comment_content.getText().toString();
+        Date date = new Date();
+
+        appDb.commentDao().insertComment(new Comment(
+                Integer.parseInt(book_id),
+                username,
+                comment_content,
+                date
+        ));
+
+        Toasty.success(this, "发表评论成功。", Toasty.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, BookDetailActivity.class);
+        intent.putExtras(this.intent.getExtras());
+        startActivity(intent);
     }
 }
