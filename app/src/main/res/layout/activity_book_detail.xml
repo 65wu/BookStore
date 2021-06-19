@@ -50,6 +50,7 @@
                 android:layout_alignParentEnd="true"
                 android:elevation="999dp"
                 android:padding="20dp"
+                android:onClick="delete_book"
                 android:src="@drawable/ic_delete_book_trash"
                 app:tint="@color/contentBodyColor" />
 
