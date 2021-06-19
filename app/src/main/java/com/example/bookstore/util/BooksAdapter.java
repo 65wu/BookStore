@@ -1,16 +1,19 @@
 package com.example.bookstore.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.R;
 import com.example.bookstore.entity.Book;
+import com.example.bookstore.ui.BookDetailActivity;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -21,13 +24,14 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
     private final List<Book> booksList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        private final RelativeLayout book;
         private final ImageView book_image;
         private final TextView book_name;
         private final TextView book_author;
 
         public ViewHolder (View view) {
             super(view);
-
+            book = view.findViewById(R.id.book);
             book_image = view.findViewById(R.id.booksThumbnailImageView);
             book_name = view.findViewById(R.id.booksTitleTextView);
             book_author = view.findViewById(R.id.booksAuthorTextView);
@@ -60,6 +64,14 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position){
         Book book = booksList.get(position);
+        holder.book.setOnClickListener(view -> {
+            Intent intent = new Intent(context, BookDetailActivity.class);
+            intent.putExtra("book_id", book.getId() + "");
+            intent.putExtra("book_name", book.getName());
+            intent.putExtra("book_author", book.getAuthor());
+            intent.putExtra("book_description", book.getDescription());
+            context.startActivity(intent);
+        });
         holder.book_image.setImageBitmap(new FileHelper().loadImageBitmap(
                 context, "book", book.getId() + ""));
         holder.book_name.setText(book.getName());

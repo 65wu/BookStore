@@ -68,14 +68,11 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.Vi
                 context, "category", category.getId() + ""));
         holder.category_name.setText(category.getName());
 
-        holder.category.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, SearchActivity.class);
-                intent.putExtra("type", "category");
-                intent.putExtra("value", category.getId() + "");
-                context.startActivity(intent);
-            }
+        holder.category.setOnClickListener(view -> {
+            Intent intent = new Intent(context, SearchActivity.class);
+            intent.putExtra("type", "category");
+            intent.putExtra("value", category.getId() + "");
+            context.startActivity(intent);
         });
     }
 }
