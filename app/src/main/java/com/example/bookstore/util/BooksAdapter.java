@@ -70,6 +70,7 @@ public class BooksAdapter extends RecyclerView.Adapter<BooksAdapter.ViewHolder> 
             intent.putExtra("book_name", book.getName());
             intent.putExtra("book_author", book.getAuthor());
             intent.putExtra("book_description", book.getDescription());
+            intent.putExtra("book_category_id", book.getCategory_id() + "");
             context.startActivity(intent);
         });
         holder.book_image.setImageBitmap(new FileHelper().loadImageBitmap(

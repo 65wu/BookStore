@@ -30,6 +30,7 @@
                 android:elevation="999dp"
                 android:padding="12dp"
                 android:src="@drawable/ic_back"
+                android:onClick="back_home"
                 app:tint="@color/contentBodyColor" />
 
             <ImageView

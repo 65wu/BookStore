@@ -38,6 +38,7 @@ public class BooksAddActivity extends AppCompatActivity {
     private ImageView image_button;
     private BookStoreDataBase appDb;
     private Bitmap selectedImage = null;
+    private final List<Integer> categoriesIdList = new ArrayList<>();
     private final List<String> categoriesNameList = new ArrayList<>();
     private final HashMap<String, Integer> categoriesMap = new HashMap<>();
     private final FileHelper fileHelper = new FileHelper();
@@ -48,6 +49,8 @@ public class BooksAddActivity extends AppCompatActivity {
         appDb = BookStoreDataBase.getInstance(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
+        Intent i = getIntent();
+        boolean if_edit = i.getBooleanExtra("if_edit", false);
 
         topBarCustomer.init(getWindow().getDecorView());
 
@@ -69,17 +72,43 @@ public class BooksAddActivity extends AppCompatActivity {
             startActivityForResult(pickPhoto , 1);
         });
 
+        // 如果是修改图书，装入之前的数据
+        if(if_edit) {
+            image_button.setImageBitmap(fileHelper.loadImageBitmap(this, "book", i.getStringExtra("book_id")));
+            TextView image_text = findViewById(R.id.add_image_text);
+            image_text.setText("修改图书图片");
+            submit_button.setText("修改");
+            book_name.setText(i.getStringExtra("book_name"));
+            book_author.setText(i.getStringExtra("book_author"));
+            book_description.setText(i.getStringExtra("book_description"));
+            // 设置下拉列表默认位置
+            powerSpinnerView.selectItemByIndex(
+                    categoriesIdList.indexOf(
+                            Integer.parseInt(
+                                    i.getStringExtra("book_category_id"))));
+        }
+
         submit_button.setOnClickListener(v -> {
             try {
-                Long book_id = appDb.bookDao().insertBook(new Book(
+                String message, book_id;
+                Book book = new Book(
                         book_name.getText().toString(),
                         book_description.getText().toString(),
                         book_author.getText().toString(),
                         category_id
-                )).get(0);
-                fileHelper.saveImage(BooksAddActivity.this, selectedImage, "book", book_id + "");
+                );
+                if(if_edit) {
+                    message = "修改新图书成功。";
+                    book_id = i.getStringExtra("book_id");
+                    book.setId(Integer.parseInt(book_id));
+                    appDb.bookDao().updateBook(book);
+                } else {
+                    message = "添加新图书成功。";
+                    book_id = appDb.bookDao().insertBook(book).get(0) + "";
+                }
+                fileHelper.saveImage(BooksAddActivity.this, selectedImage, "book", book_id);
                 Toasty.success(getApplicationContext(),
-                        "添加新图书成功。",
+                        message,
                         Toast.LENGTH_SHORT,
                         true).show();
                 Intent intent = new Intent(BooksAddActivity.this, MainActivity.class);
@@ -94,6 +123,7 @@ public class BooksAddActivity extends AppCompatActivity {
     private void categoriesParse() {
         List<Category> categoryList = appDb.categoryDao().getAllCategories();
         for(Category c: categoryList) {
+            categoriesIdList.add(c.getId());
             categoriesNameList.add(c.getName());
             categoriesMap.put(c.getName(), c.getId());
         }

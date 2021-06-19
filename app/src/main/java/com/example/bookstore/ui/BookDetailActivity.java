@@ -3,12 +3,14 @@ package com.example.bookstore.ui;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bookstore.MainActivity;
 import com.example.bookstore.R;
 import com.example.bookstore.util.FileHelper;
 
@@ -34,5 +36,17 @@ public class BookDetailActivity extends AppCompatActivity {
         detail_book_name.setText(book_name);
         detail_book_author.setText(book_author);
         detail_book_description.setText(book_description);
+
+        ImageView edit_book = findViewById(R.id.edit_book);
+        edit_book.setOnClickListener(view -> {
+            Intent i = new Intent(this, BooksAddActivity.class);
+            i.putExtras(intent.getExtras());
+            i.putExtra("if_edit", true);
+            startActivity(i);
+        });
+    }
+    public void back_home(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
