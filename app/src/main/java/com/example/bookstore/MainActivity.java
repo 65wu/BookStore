@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 //        Comment[] c = new Comment[5];
 //        for(int i = 0; i < 5; i++) {
 //            c[i] = new Comment(
-//                    1,
+//                    2,
 //                    "测试用户" + i,
 //                    i + "一长串评论测试，这本书感觉还不错，纸张印刷很好，推荐大家购买，是本好书",
 //                    new Date()

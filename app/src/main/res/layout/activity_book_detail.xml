@@ -162,10 +162,11 @@
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp">
                 <TextView
+                    android:id="@+id/comment_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:textSize="24sp"
+                    android:textSize="22sp"
                     android:textColor="@color/contentTextColor"
                     android:text="@string/comment"/>
             </RelativeLayout>

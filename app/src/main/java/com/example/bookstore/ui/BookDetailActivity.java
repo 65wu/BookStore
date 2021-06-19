@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -18,8 +17,11 @@ import com.example.bookstore.MainActivity;
 import com.example.bookstore.R;
 import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.entity.Book;
+import com.example.bookstore.entity.Comment;
 import com.example.bookstore.util.FileHelper;
 import com.example.bookstore.util.RecyclerviewLoader;
+
+import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
@@ -68,9 +70,11 @@ public class BookDetailActivity extends AppCompatActivity {
         });
 
         // 装载评论
-        recyclerviewLoader.loadCommentsRecycleView(
-                findViewById(R.id.comments_list),
-                appDb.commentDao().getCommentsFromBook(Integer.parseInt(book_id)));
+        List<Comment> categoryList = appDb.commentDao().getCommentsFromBook(Integer.parseInt(book_id));
+        TextView comment_title = findViewById(R.id.comment_title);
+        String comment_title_detail = "评论(" + categoryList.size() + ")";
+        comment_title.setText(comment_title_detail);
+        recyclerviewLoader.loadCommentsRecycleView(findViewById(R.id.comments_list), categoryList);
     }
     // 返回首页按钮
     public void back_home(View view) {
