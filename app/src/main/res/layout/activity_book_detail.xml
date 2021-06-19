@@ -98,7 +98,7 @@
                 android:layout_below="@+id/detail_book_information"
                 android:background="@drawable/ic_detail_book_information_background"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
+                android:paddingEnd="10dp"
                 android:paddingTop="15dp"
                 android:paddingBottom="15dp">
                 <ImageView
@@ -124,8 +124,8 @@
                     android:layout_toStartOf="@+id/detail_book_comment_num"
                     android:layout_marginStart="5dp"
                     android:elevation="999dp"
-                    android:padding="2dp"
-                    android:src="@drawable/ic_chat"/>
+                    android:padding="1dp"
+                    android:src="@drawable/ic_star"/>
                 <TextView
                     android:id="@+id/detail_book_comment_num"
                     android:layout_width="30dp"
@@ -139,10 +139,21 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginStart="5dp"
-                    android:layout_alignParentEnd="true"
+                    android:layout_toStartOf="@+id/detail_book_share_num"
                     android:elevation="999dp"
-                    android:padding="2dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="3dp"
+                    android:paddingStart="3dp"
+                    android:paddingEnd="7dp"
                     android:src="@drawable/ic_share"/>
+                <TextView
+                    android:id="@+id/detail_book_share_num"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="bottom"
+                    android:paddingBottom="2dp"
+                    android:text="10"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/detail_book_comment_title"
