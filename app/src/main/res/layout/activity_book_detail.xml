@@ -165,7 +165,8 @@
                 android:id="@+id/comments_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/detail_book_comment_title">
+                android:layout_below="@+id/detail_book_comment_title"
+                android:layout_marginBottom="60dp">
             </androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>

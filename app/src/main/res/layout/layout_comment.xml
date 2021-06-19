@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/detail_book_comment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:cardElevation="100dp">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="0.8dp"
+    android:layout_marginBottom="0.5dp"
+    app:cardElevation="5dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,7 +32,6 @@
             android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
             android:layout_toEndOf="@+id/user_icon"
-            android:text="用户名"
             android:textSize="18sp"
             android:textColor="@color/contentTextColor"
             android:textStyle="bold"/>
@@ -41,7 +42,6 @@
             android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
             android:layout_alignParentEnd="true"
-            android:text="2021/6/18"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/comment_content"
@@ -53,7 +53,6 @@
             android:paddingEnd="0dp"
             android:layout_toEndOf="@+id/user_icon"
             android:layout_below="@+id/comment_username"
-            android:text="用户具体评论用户具体评论用户具体评论用户具体评论用户具体评论"
             android:textColor="#424242"
             android:textSize="16sp" />
     </RelativeLayout>
