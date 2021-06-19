@@ -15,6 +15,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.bookstore.db.BookStoreDataBase;
+import com.example.bookstore.entity.Comment;
 import com.example.bookstore.ui.BookCategoriesAddActivity;
 import com.example.bookstore.ui.BooksAddActivity;
 import com.example.bookstore.ui.LoginActivity;
@@ -28,6 +29,8 @@ import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
+
 import cn.leancloud.AVUser;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,13 +43,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         appDb = BookStoreDataBase.getInstance(this);
-//        Category[] c = new Category[10];
-//        Book[] books = new Book[10];
-//        for(int i = 0; i < 10; i++) {
-//            c[i] = new Category(2 + i, "现代文学" + i);
-//        }
-//        appDb.categoryDao().insertCategory(c);
-//        appDb.bookDao().insertBook(books);
+
+        Comment[] c = new Comment[5];
+        for(int i = 0; i < 5; i++) {
+            c[i] = new Comment(
+                    1,
+                    "测试用户",
+                    "一长串评论测试，这本书感觉还不错，纸张印刷很好，推荐大家购买，是本好书",
+                    new Date()
+            );
+        }
+        appDb.commentDao().insertComment(c);
 
         super.onCreate(savedInstanceState);
         if(NetworkUtil.isOnline(this)) {

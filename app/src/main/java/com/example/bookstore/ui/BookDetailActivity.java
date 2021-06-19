@@ -19,6 +19,7 @@ import com.example.bookstore.R;
 import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.util.FileHelper;
+import com.example.bookstore.util.RecyclerviewLoader;
 
 import es.dmoral.toasty.Toasty;
 
@@ -30,6 +31,7 @@ public class BookDetailActivity extends AppCompatActivity {
     Integer book_category_id;
     AlertDialog.Builder builder;
     BookStoreDataBase appDb;
+    private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         appDb = BookStoreDataBase.getInstance(this);
@@ -50,11 +52,13 @@ public class BookDetailActivity extends AppCompatActivity {
         TextView detail_book_author = findViewById(R.id.detail_book_author);
         TextView detail_book_description = findViewById(R.id.detail_book_description);
 
+        // 初始化图书详情
         detail_book_image.setImageBitmap(book_image);
         detail_book_name.setText(book_name);
         detail_book_author.setText(book_author);
         detail_book_description.setText(book_description);
 
+        // 绑定修改图书按钮
         ImageView edit_book = findViewById(R.id.edit_book);
         edit_book.setOnClickListener(view -> {
             Intent i = new Intent(this, BooksAddActivity.class);
@@ -62,11 +66,18 @@ public class BookDetailActivity extends AppCompatActivity {
             i.putExtra("if_edit", true);
             startActivity(i);
         });
+
+        // 装载评论
+        recyclerviewLoader.loadCommentsRecycleView(
+                findViewById(R.id.comments_list),
+                appDb.commentDao().getCommentsFromBook(Integer.parseInt(book_id)));
     }
+    // 返回首页按钮
     public void back_home(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+    // 删除图书按钮
     public void delete_book(View view) {
         builder.setMessage("是否删除该图书？")
                 .setCancelable(false)

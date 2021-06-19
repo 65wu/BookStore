@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
+import com.example.bookstore.entity.Comment;
 
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class RecyclerviewLoader {
         LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         CategoriesAdapter adapter = new CategoriesAdapter(categoryList, context);
+        recyclerView.setAdapter(adapter);
+    }
+    public void loadCommentsRecycleView(RecyclerView recyclerView, List<Comment> commentList) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(layoutManager);
+        CommentsAdapter adapter = new CommentsAdapter(commentList, context);
         recyclerView.setAdapter(adapter);
     }
 }
