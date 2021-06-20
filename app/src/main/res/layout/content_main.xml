@@ -28,8 +28,8 @@
                 android:layout_marginBottom="5dp">
             </androidx.recyclerview.widget.RecyclerView>
 
-            <cn.jzvd.JzvdStd
-                android:id="@+id/jz_video"
+            <com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
+                android:id="@+id/video_player"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:paddingStart="10dp"

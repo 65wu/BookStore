@@ -1,9 +1,13 @@
 package com.example.bookstore;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,10 +29,11 @@ import com.example.bookstore.util.NetworkUtil;
 import com.example.bookstore.util.adapter.RecyclerviewLoader;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.shuyu.gsyvideoplayer.GSYVideoManager;
+import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
+import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 import org.jetbrains.annotations.NotNull;
-
-import cn.jzvd.Jzvd;
 import cn.leancloud.AVUser;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     private BookStoreDataBase appDb;
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
     private final SearchButtonClick searchButtonClick = new SearchButtonClick(this);
+    StandardGSYVideoPlayer videoPlayer;
+    OrientationUtils orientationUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 setSupportActionBar(toolbar);
                 initRecyclerView();
                 initParts();
+                initVideo();
                 searchButtonClick.authorSearch(getWindow().getDecorView());
             } else {
                 // 跳到登录页面
@@ -133,9 +141,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.setSelectedItemId(R.id.navigationHome);
 
-        // 设置视频
-        cn.jzvd.JzvdStd jzvdStd = findViewById(R.id.jz_video);
-        jzvdStd.setUp("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4", "书城介绍视频");
     }
 
     // 用户登出
@@ -154,16 +159,72 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, BookCategoriesAddActivity.class);
         startActivity(intent);
     }
-    @Override
-    public void onBackPressed() {
-        if (Jzvd.backPress()) {
-            return;
-        }
-        super.onBackPressed();
+
+    private void initVideo() {
+        videoPlayer = findViewById(R.id.video_player);
+
+        String source1 = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+        videoPlayer.setUp(source1, true, "测试视频");
+
+        //增加封面
+        ImageView imageView = new ImageView(this);
+        imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        imageView.setImageResource(R.mipmap.ic_launcher);
+        videoPlayer.setThumbImageView(imageView);
+        //增加title
+        videoPlayer.getTitleTextView().setVisibility(View.VISIBLE);
+        //设置返回键
+        videoPlayer.getBackButton().setVisibility(View.VISIBLE);
+        //设置旋转
+        orientationUtils = new OrientationUtils(this, videoPlayer);
+        //设置全屏按键功能,这是使用的是选择屏幕，而不是全屏
+        videoPlayer.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                orientationUtils.resolveByClick();
+            }
+        });
+        //是否可以滑动调整
+        videoPlayer.setIsTouchWiget(true);
+        //设置返回按键功能
+        videoPlayer.getBackButton().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        videoPlayer.startPlayLogic();
     }
+
     @Override
     protected void onPause() {
         super.onPause();
-        Jzvd.releaseAllVideos();
+        videoPlayer.onVideoPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        videoPlayer.onVideoResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        GSYVideoManager.releaseAllVideos();
+        if (orientationUtils != null)
+            orientationUtils.releaseListener();
+    }
+
+    @Override
+    public void onBackPressed() {
+        //先返回正常状态
+        if (orientationUtils.getScreenType() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            videoPlayer.getFullscreenButton().performClick();
+            return;
+        }
+        //释放所有
+        videoPlayer.setVideoAllCallBack(null);
+        super.onBackPressed();
     }
 }
