@@ -27,9 +27,9 @@
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:elevation="999dp"
+                android:onClick="back_home"
                 android:padding="12dp"
                 android:src="@drawable/ic_back"
-                android:onClick="back_home"
                 app:tint="@color/contentBodyColor" />
 
             <ImageView
@@ -48,8 +48,8 @@
                 android:layout_height="60dp"
                 android:layout_alignParentEnd="true"
                 android:elevation="999dp"
-                android:padding="20dp"
                 android:onClick="delete_book"
+                android:padding="20dp"
                 android:src="@drawable/ic_delete_book_trash"
                 app:tint="@color/contentBodyColor" />
 
@@ -90,6 +90,7 @@
                     android:text="内容随便用些东西测试填充一下，内容随便用些东西测试填充一下"
                     android:textSize="12sp" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/detail_book_decoration"
                 android:layout_width="match_parent"
@@ -97,9 +98,10 @@
                 android:layout_below="@+id/detail_book_information"
                 android:background="@drawable/ic_detail_book_information_background"
                 android:paddingStart="20dp"
-                android:paddingEnd="10dp"
                 android:paddingTop="15dp"
+                android:paddingEnd="10dp"
                 android:paddingBottom="15dp">
+
                 <ImageView
                     android:id="@+id/detail_book_like"
                     android:layout_width="30dp"
@@ -107,7 +109,8 @@
                     android:layout_toStartOf="@+id/detail_book_like_num"
                     android:elevation="999dp"
                     android:padding="2dp"
-                    android:src="@drawable/ic_love"/>
+                    android:src="@drawable/ic_love" />
+
                 <TextView
                     android:id="@+id/detail_book_like_num"
                     android:layout_width="30dp"
@@ -115,16 +118,18 @@
                     android:layout_toStartOf="@+id/detail_book_comment_icon"
                     android:gravity="bottom"
                     android:paddingBottom="2dp"
-                    android:text="30"/>
+                    android:text="30" />
+
                 <ImageView
                     android:id="@+id/detail_book_comment_icon"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_toStartOf="@+id/detail_book_comment_num"
                     android:layout_marginStart="3dp"
+                    android:layout_toStartOf="@+id/detail_book_comment_num"
                     android:elevation="999dp"
                     android:padding="1dp"
-                    android:src="@drawable/ic_star"/>
+                    android:src="@drawable/ic_star" />
+
                 <TextView
                     android:id="@+id/detail_book_comment_num"
                     android:layout_width="30dp"
@@ -132,7 +137,8 @@
                     android:layout_toStartOf="@+id/detail_book_share"
                     android:gravity="bottom"
                     android:paddingBottom="2dp"
-                    android:text="40"/>
+                    android:text="40" />
+
                 <ImageView
                     android:id="@+id/detail_book_share"
                     android:layout_width="30dp"
@@ -141,7 +147,8 @@
                     android:layout_toStartOf="@+id/detail_book_share_num"
                     android:elevation="999dp"
                     android:padding="4dp"
-                    android:src="@drawable/ic_share"/>
+                    android:src="@drawable/ic_share" />
+
                 <TextView
                     android:id="@+id/detail_book_share_num"
                     android:layout_width="30dp"
@@ -149,61 +156,66 @@
                     android:layout_alignParentEnd="true"
                     android:gravity="bottom"
                     android:paddingBottom="2dp"
-                    android:text="10"/>
+                    android:text="10" />
             </RelativeLayout>
+
             <RelativeLayout
                 android:id="@+id/detail_book_comment_title"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_below="@+id/detail_book_decoration"
                 android:paddingStart="20dp"
-                android:paddingEnd="20dp"
                 android:paddingTop="15dp"
+                android:paddingEnd="20dp"
                 android:paddingBottom="15dp">
+
                 <TextView
                     android:id="@+id/comment_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
+                    android:text="@string/comment"
                     android:textColor="@color/contentTextColor"
-                    android:text="@string/comment"/>
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/comments_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/detail_book_comment_title"
-                android:layout_marginBottom="60dp">
-            </androidx.recyclerview.widget.RecyclerView>
+                android:layout_marginBottom="60dp"></androidx.recyclerview.widget.RecyclerView>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/ic_detail_book_information_background"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/ic_detail_book_information_background">
+        app:layout_constraintStart_toStartOf="parent">
+
         <EditText
             android:id="@+id/send_comment_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="70dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:gravity="center_vertical"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/ic_background_comment_edit"
-            android:hint="请输入评论"/>
+            android:gravity="center_vertical"
+            android:hint="请输入评论"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp" />
+
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginEnd="7dp"
             android:layout_alignParentEnd="true"
-            android:padding="12dp"
+            android:layout_marginEnd="7dp"
             android:onClick="send_comment"
-            android:src="@drawable/ic_comment_send"/>
+            android:padding="12dp"
+            android:src="@drawable/ic_comment_send" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

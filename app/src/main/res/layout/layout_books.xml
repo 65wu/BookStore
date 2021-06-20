@@ -1,20 +1,20 @@
-<RelativeLayout android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/book"
+    android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:layout_marginTop="10dp"
     android:layout_marginStart="12dp"
+    android:layout_marginTop="10dp"
     android:layout_marginEnd="12dp"
-    android:background="@drawable/ic_background_book_border"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@drawable/ic_background_book_border">
 
     <ImageView
         android:id="@+id/booksThumbnailImageView"
         android:layout_width="84dp"
         android:layout_height="100dp"
         android:paddingStart="8dp"
-        android:paddingEnd="0dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"/>
+        android:paddingEnd="0dp"
+        android:paddingBottom="8dp" />
 
 
     <TextView

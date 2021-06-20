@@ -29,6 +29,7 @@ import cn.leancloud.AVUser;
 import es.dmoral.toasty.Toasty;
 
 public class BookDetailActivity extends AppCompatActivity {
+    private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
     String book_id;
     String book_name;
     String book_author;
@@ -37,7 +38,7 @@ public class BookDetailActivity extends AppCompatActivity {
     Intent intent;
     AlertDialog.Builder builder;
     BookStoreDataBase appDb;
-    private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
+
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         appDb = BookStoreDataBase.getInstance(this);
@@ -80,11 +81,13 @@ public class BookDetailActivity extends AppCompatActivity {
         comment_title.setText(comment_title_detail);
         recyclerviewLoader.loadCommentsRecycleView(findViewById(R.id.comments_list), categoryList);
     }
+
     // 返回首页按钮
     public void back_home(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
     // 删除图书按钮
     public void delete_book(View view) {
         builder.setMessage("是否删除该图书？")
@@ -111,6 +114,7 @@ public class BookDetailActivity extends AppCompatActivity {
         alert.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor("#03A9F4"));
         alert.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#03A9F4"));
     }
+
     // 发表评论
     public void send_comment(View view) {
         String username = AVUser.getCurrentUser().getUsername();

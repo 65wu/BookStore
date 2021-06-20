@@ -7,52 +7,58 @@
     android:layout_marginTop="0.8dp"
     android:layout_marginBottom="0.5dp"
     app:cardElevation="5dp">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="20dp"
-        android:paddingEnd="20dp"
         android:paddingTop="15dp"
+        android:paddingEnd="20dp"
         android:paddingBottom="30dp">
+
         <androidx.cardview.widget.CardView
             android:id="@+id/user_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="40dp">
+
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_user_avatar"/>
+                android:src="@drawable/ic_user_avatar" />
         </androidx.cardview.widget.CardView>
+
         <TextView
             android:id="@+id/comment_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
             android:layout_toEndOf="@+id/user_icon"
-            android:textSize="18sp"
             android:textColor="@color/contentTextColor"
-            android:textStyle="bold"/>
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/send_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginStart="20dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
             android:textSize="18sp" />
+
         <TextView
             android:id="@+id/comment_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_below="@+id/comment_username"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@+id/user_icon"
             android:paddingStart="2dp"
             android:paddingEnd="0dp"
-            android:layout_toEndOf="@+id/user_icon"
-            android:layout_below="@+id/comment_username"
             android:textColor="#424242"
             android:textSize="16sp" />
     </RelativeLayout>

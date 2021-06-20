@@ -45,12 +45,11 @@
                     style="@style/headerText"
                     android:layout_gravity="center"
                     android:layout_marginTop="40dp"
-                    android:text="@string/app_name"/>
+                    android:text="@string/app_name" />
 
                 <include
-                    layout="@layout/layout_register"
                     android:id="@+id/layout_register"
-                    />
+                    layout="@layout/layout_register" />
 
             </LinearLayout>
         </RelativeLayout>

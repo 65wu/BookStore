@@ -24,12 +24,12 @@
             android:layout_marginTop="@dimen/signup_text_margin_top">
 
             <EditText
-                style="@style/modifiedEditText"
                 android:id="@+id/username"
+                style="@style/modifiedEditText"
+                android:autofillHints=""
                 android:hint="@string/name"
                 android:inputType="text"
-                android:maxLines="1"
-                android:autofillHints="" />
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,12 +37,12 @@
             android:layout_marginTop="@dimen/signup_text_margin_top">
 
             <EditText
-                style="@style/modifiedEditText"
                 android:id="@+id/mobile_number"
+                style="@style/modifiedEditText"
+                android:autofillHints=""
                 android:hint="@string/mobile_number"
                 android:inputType="text"
-                android:maxLines="1"
-                android:autofillHints="" />
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,12 +50,12 @@
             android:layout_marginTop="@dimen/signup_text_margin_top">
 
             <EditText
-                style="@style/modifiedEditText"
                 android:id="@+id/email"
+                style="@style/modifiedEditText"
+                android:autofillHints=""
                 android:hint="@string/login_email_hint"
                 android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:autofillHints="" />
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -63,17 +63,17 @@
             android:layout_marginTop="@dimen/signup_text_margin_top">
 
             <EditText
-                style="@style/modifiedEditText"
                 android:id="@+id/password"
+                style="@style/modifiedEditText"
+                android:autofillHints=""
                 android:hint="@string/login_password_hint"
                 android:inputType="textPassword"
-                android:maxLines="1"
-                android:autofillHints="" />
+                android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            style="@style/loginButton"
             android:id="@+id/registerButton"
+            style="@style/loginButton"
             android:layout_gravity="center"
             android:text="@string/register" />
 

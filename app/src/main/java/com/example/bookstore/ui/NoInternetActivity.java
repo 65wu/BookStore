@@ -15,6 +15,7 @@ public class NoInternetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_no_internet);
     }
+
     public void backMainClicked(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

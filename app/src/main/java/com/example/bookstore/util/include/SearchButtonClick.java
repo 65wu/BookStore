@@ -14,9 +14,11 @@ import es.dmoral.toasty.Toasty;
 
 public class SearchButtonClick {
     private final Context context;
+
     public SearchButtonClick(Context context) {
         this.context = context;
     }
+
     public void authorSearch(View v) {
         Button search_button = v.findViewById(R.id.search_button);
         EditText search_input = v.findViewById(R.id.search_input);
@@ -26,7 +28,7 @@ public class SearchButtonClick {
             String input = search_input.getText().toString();
             intent.putExtra("type", "author");
             intent.putExtra("value", input);
-            if(!input.isEmpty()) {
+            if (!input.isEmpty()) {
                 context.startActivity(intent);
             } else {
                 Toasty.error(

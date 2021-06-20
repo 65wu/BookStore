@@ -2,59 +2,60 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/df_dialog_layout"
     android:id="@+id/dialogParent"
+    style="@style/df_dialog_layout"
     tools:context="com.example.bookstore.ui.NoInternetActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="16dp"
         android:elevation="10dp"
+        android:gravity="center"
         app:cardBackgroundColor="@color/whiteCardColor"
-        android:gravity="center">
+        app:cardCornerRadius="16dp">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="20dp">
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/no_internet_image"
                 android:layout_gravity="center"
-                android:contentDescription="@string/no_internet_image" />
+                android:contentDescription="@string/no_internet_image"
+                android:src="@drawable/no_internet_image" />
 
             <TextView
                 style="@style/homeHeading"
-                android:textColor="@color/blackTextColor"
-                android:textSize="@dimen/headerTextSize"
-                android:text="@string/no_internet"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="10dp"
+                android:text="@string/no_internet"
+                android:textColor="@color/blackTextColor"
+                android:textSize="@dimen/headerTextSize" />
 
             <TextView
                 android:id="@+id/spinAndWinReward"
+                style="@style/learnhubTitleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                style="@style/learnhubTitleText"
-                android:textStyle="normal"
+                android:text="@string/please_check_your_connection_status_and_try_again"
                 android:textSize="14sp"
-                android:text="@string/please_check_your_connection_status_and_try_again"/>
+                android:textStyle="normal" />
 
             <Button
                 android:id="@+id/btnSpinAndWinRedeem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/close"
                 android:layout_marginTop="20dp"
-                android:textColor="@color/whiteTextColor"
                 android:background="@drawable/onboarding_button"
-                android:onClick="backMainClicked"/>
+                android:onClick="backMainClicked"
+                android:text="@string/close"
+                android:textColor="@color/whiteTextColor" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

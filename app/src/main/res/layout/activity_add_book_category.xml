@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.BookCategoriesAddActivity">
 
-    <include layout="@layout/layout_top_bar"/>
+    <include layout="@layout/layout_top_bar" />
 
     <LinearLayout
         android:layout_width="match_parent"

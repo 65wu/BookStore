@@ -54,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onError(@NotNull Throwable throwable) {
                     String message = throwable.getMessage();
                     assert message != null;
-                    if(message.equals("Username has already been taken.")) {
+                    if (message.equals("Username has already been taken.")) {
                         message = "此用户名已被占用。";
                     }
                     Toasty.error(

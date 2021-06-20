@@ -12,6 +12,7 @@ import java.util.List;
 public interface CommentDao {
     @Query("Select * from comment where book_id = :book_id")
     List<Comment> getCommentsFromBook(int book_id);
+
     @Insert
     void insertComment(Comment... comment);
 }

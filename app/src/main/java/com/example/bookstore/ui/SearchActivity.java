@@ -14,6 +14,7 @@ import com.example.bookstore.util.include.SearchButtonClick;
 public class SearchActivity extends AppCompatActivity {
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
     private final SearchButtonClick searchButtonClick = new SearchButtonClick(this);
+
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
@@ -24,11 +25,11 @@ public class SearchActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String type = intent.getStringExtra("type");
         String value = intent.getStringExtra("value");
-        if(type.equals("author")) {
+        if (type.equals("author")) {
             recyclerviewLoader.loadBooksRecycleView(
                     findViewById(R.id.search_result),
                     appDb.bookDao().getBooksByAuthor(value));
-        } else if(type.equals("category")) {
+        } else if (type.equals("category")) {
             recyclerviewLoader.loadBooksRecycleView(
                     findViewById(R.id.search_result),
                     appDb.bookDao().getBooksByCategory(Integer.parseInt(value)));

@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
 public class FileHelper {
-    public void saveImage(Context context, Bitmap bitmap, String type, String id){
+    public void saveImage(Context context, Bitmap bitmap, String type, String id) {
         id = type + "_" + id + ".png";
         FileOutputStream fileOutputStream;
         try {
@@ -20,15 +20,16 @@ public class FileHelper {
             e.printStackTrace();
         }
     }
-    public Bitmap loadImageBitmap(Context context,String type, String id){
+
+    public Bitmap loadImageBitmap(Context context, String type, String id) {
         id = type + "_" + id + ".png";
         FileInputStream fileInputStream;
         Bitmap bitmap = null;
-        try{
+        try {
             fileInputStream = context.openFileInput(id);
             bitmap = BitmapFactory.decodeStream(fileInputStream);
             fileInputStream.close();
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return bitmap;

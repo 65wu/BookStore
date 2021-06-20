@@ -33,15 +33,15 @@ import java.util.List;
 import es.dmoral.toasty.Toasty;
 
 public class BooksAddActivity extends AppCompatActivity {
-    Integer category_id;
-    private ImageView image_button;
-    private BookStoreDataBase appDb;
-    private Bitmap selectedImage = null;
     private final List<Integer> categoriesIdList = new ArrayList<>();
     private final List<String> categoriesNameList = new ArrayList<>();
     private final HashMap<String, Integer> categoriesMap = new HashMap<>();
     private final FileHelper fileHelper = new FileHelper();
     private final TopBarCustomer topBarCustomer = new TopBarCustomer(this, "添加新图书");
+    Integer category_id;
+    private ImageView image_button;
+    private BookStoreDataBase appDb;
+    private Bitmap selectedImage = null;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -68,11 +68,11 @@ public class BooksAddActivity extends AppCompatActivity {
 
         image_button.setOnClickListener(v -> {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(pickPhoto , 1);
+            startActivityForResult(pickPhoto, 1);
         });
 
         // 如果是修改图书，装入之前的数据
-        if(if_edit) {
+        if (if_edit) {
             selectedImage = fileHelper.loadImageBitmap(this, "book", i.getStringExtra("book_id"));
             image_button.setImageBitmap(selectedImage);
             TextView image_text = findViewById(R.id.add_image_text);
@@ -97,7 +97,7 @@ public class BooksAddActivity extends AppCompatActivity {
                         book_author.getText().toString(),
                         category_id
                 );
-                if(if_edit) {
+                if (if_edit) {
                     message = "修改新图书成功。";
                     book_id = i.getStringExtra("book_id");
                     book.setId(Integer.parseInt(book_id));
@@ -119,10 +119,11 @@ public class BooksAddActivity extends AppCompatActivity {
             }
         });
     }
+
     // 图书种类id与图书种类名双向绑定
     private void categoriesParse() {
         List<Category> categoryList = appDb.categoryDao().getAllCategories();
-        for(Category c: categoryList) {
+        for (Category c : categoryList) {
             categoriesIdList.add(c.getId());
             categoriesNameList.add(c.getName());
             categoriesMap.put(c.getName(), c.getId());
@@ -144,6 +145,7 @@ public class BooksAddActivity extends AppCompatActivity {
             }
         }
     }
+
     // 在相册界面切回app时更新图片
     @Override
     public void onResume() {

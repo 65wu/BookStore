@@ -2,9 +2,7 @@ package com.example.bookstore;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,10 +21,10 @@ import com.example.bookstore.ui.BookCategoriesAddActivity;
 import com.example.bookstore.ui.BooksAddActivity;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
-import com.example.bookstore.util.include.SearchButtonClick;
-import com.example.bookstore.util.include.BottomNavigationBehavior;
 import com.example.bookstore.util.NetworkUtil;
 import com.example.bookstore.util.adapter.RecyclerviewLoader;
+import com.example.bookstore.util.include.BottomNavigationBehavior;
+import com.example.bookstore.util.include.SearchButtonClick;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.shuyu.gsyvideoplayer.GSYVideoManager;
@@ -34,16 +32,39 @@ import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 
 import org.jetbrains.annotations.NotNull;
+
 import cn.leancloud.AVUser;
 
 public class MainActivity extends AppCompatActivity {
+    private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
+    private final SearchButtonClick searchButtonClick = new SearchButtonClick(this);
+    private final BottomNavigationView.OnNavigationItemSelectedListener bottomNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+            if (item.getItemId() == R.id.navigationMenu) {
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                drawer.openDrawer(GravityCompat.START);
+                return true;
+            }
+            return false;
+        }
+    };
+    private final NavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+            if (item.getItemId() == R.id.navigationMenu) {
+                DrawerLayout drawer = findViewById(R.id.drawer_layout);
+                drawer.openDrawer(GravityCompat.START);
+                return true;
+            }
+            return false;
+        }
+    };
+    StandardGSYVideoPlayer videoPlayer;
+    OrientationUtils orientationUtils;
     private AVUser currentUser;
     private Toolbar toolbar;
     private BookStoreDataBase appDb;
-    private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);
-    private final SearchButtonClick searchButtonClick = new SearchButtonClick(this);
-    StandardGSYVideoPlayer videoPlayer;
-    OrientationUtils orientationUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 //        appDb.commentDao().insertComment(c);
 
         super.onCreate(savedInstanceState);
-        if(NetworkUtil.isOnline(this)) {
+        if (NetworkUtil.isOnline(this)) {
             currentUser = AVUser.getCurrentUser();
             if (currentUser != null) {
                 setContentView(R.layout.activity_main);
@@ -82,30 +103,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-
-    private final BottomNavigationView.OnNavigationItemSelectedListener bottomNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-            if (item.getItemId() == R.id.navigationMenu) {
-                    DrawerLayout drawer = findViewById(R.id.drawer_layout);
-                    drawer.openDrawer(GravityCompat.START);
-                    return true;
-                }
-            return false;
-        }
-    };
-
-    private final NavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener = new NavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-            if (item.getItemId() == R.id.navigationMenu) {
-                DrawerLayout drawer = findViewById(R.id.drawer_layout);
-                drawer.openDrawer(GravityCompat.START);
-                return true;
-            }
-            return false;
-        }
-    };
 
     private void initRecyclerView() {
         recyclerviewLoader.loadBooksRecycleView(

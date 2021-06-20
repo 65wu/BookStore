@@ -20,18 +20,6 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     private final Context context;
     private final List<Comment> commentList;
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
-        private final TextView username;
-        private final TextView send_date;
-        private final TextView content;
-
-        public ViewHolder (View view) {
-            super(view);
-            username = view.findViewById(R.id.comment_username);
-            send_date = view.findViewById(R.id.send_date);
-            content = view.findViewById(R.id.comment_content);
-        }
-    }
     public CommentsAdapter(List<Comment> booksList, Context context) {
         this.commentList = booksList;
         this.context = context;
@@ -43,22 +31,35 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     }
 
     @Override
-    public int getItemCount(){
+    public int getItemCount() {
         return commentList.size();
     }
 
     @NotNull
     @Override
-    public CommentsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_comment, parent,false);
+    public CommentsAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_comment, parent, false);
         return new CommentsAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CommentsAdapter.ViewHolder holder, int position){
+    public void onBindViewHolder(CommentsAdapter.ViewHolder holder, int position) {
         Comment comment = commentList.get(position);
         holder.username.setText(comment.getUsername());
         holder.send_date.setText(DateConverters.getFormatDate(comment.getSend_date()));
         holder.content.setText(comment.getContent());
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        private final TextView username;
+        private final TextView send_date;
+        private final TextView content;
+
+        public ViewHolder(View view) {
+            super(view);
+            username = view.findViewById(R.id.comment_username);
+            send_date = view.findViewById(R.id.send_date);
+            content = view.findViewById(R.id.comment_content);
+        }
     }
 }

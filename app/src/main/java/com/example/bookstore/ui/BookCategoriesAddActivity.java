@@ -26,10 +26,11 @@ import java.io.InputStream;
 import es.dmoral.toasty.Toasty;
 
 public class BookCategoriesAddActivity extends AppCompatActivity {
-    private ImageView image_button;
-    private Bitmap selectedImage = null;
     private final FileHelper fileHelper = new FileHelper();
     private final TopBarCustomer topBarCustomer = new TopBarCustomer(this, "添加新图书类别");
+    private ImageView image_button;
+    private Bitmap selectedImage = null;
+
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         BookStoreDataBase appDb = BookStoreDataBase.getInstance(this);
@@ -43,7 +44,7 @@ public class BookCategoriesAddActivity extends AppCompatActivity {
 
         image_button.setOnClickListener(v -> {
             Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-            startActivityForResult(pickPhoto , 1);
+            startActivityForResult(pickPhoto, 1);
         });
 
         submit_button.setOnClickListener(v -> {
@@ -64,6 +65,7 @@ public class BookCategoriesAddActivity extends AppCompatActivity {
             }
         });
     }
+
     // 读取相册图片
     @Override
     protected void onActivityResult(int reqCode, int resultCode, Intent data) {
@@ -79,6 +81,7 @@ public class BookCategoriesAddActivity extends AppCompatActivity {
             }
         }
     }
+
     // 在相册界面切回app时更新图片
     @Override
     public void onResume() {

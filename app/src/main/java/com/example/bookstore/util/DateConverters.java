@@ -18,7 +18,7 @@ public class DateConverters {
     }
 
     public static String getFormatDate(Date date) {
-        if(date == null) date = new Date();
+        if (date == null) date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         return formatter.format(date);
     }
