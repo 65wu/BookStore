@@ -5,7 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,7 +20,7 @@ import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.util.FileHelper;
-import com.example.bookstore.util.TopBarCustomer;
+import com.example.bookstore.util.include.TopBarCustomer;
 import com.skydoves.powerspinner.OnSpinnerItemSelectedListener;
 import com.skydoves.powerspinner.PowerSpinnerView;
 

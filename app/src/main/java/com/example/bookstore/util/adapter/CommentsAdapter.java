@@ -1,7 +1,6 @@
-package com.example.bookstore.util;
+package com.example.bookstore.util.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.R;
 import com.example.bookstore.entity.Comment;
+import com.example.bookstore.util.DateConverters;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHolder> {
     private final Context context;

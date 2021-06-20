@@ -15,21 +15,18 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.bookstore.db.BookStoreDataBase;
-import com.example.bookstore.entity.Comment;
 import com.example.bookstore.ui.BookCategoriesAddActivity;
 import com.example.bookstore.ui.BooksAddActivity;
 import com.example.bookstore.ui.LoginActivity;
 import com.example.bookstore.ui.NoInternetActivity;
-import com.example.bookstore.util.SearchButtonClick;
-import com.example.bookstore.util.BottomNavigationBehavior;
+import com.example.bookstore.util.include.SearchButtonClick;
+import com.example.bookstore.util.include.BottomNavigationBehavior;
 import com.example.bookstore.util.NetworkUtil;
-import com.example.bookstore.util.RecyclerviewLoader;
+import com.example.bookstore.util.adapter.RecyclerviewLoader;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Date;
 
 import cn.jzvd.Jzvd;
 import cn.leancloud.AVUser;
@@ -136,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.setSelectedItemId(R.id.navigationHome);
 
+        // 设置视频
+        cn.jzvd.JzvdStd jzvdStd = findViewById(R.id.jz_video);
+        jzvdStd.setUp("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4", "书城介绍视频");
     }
 
     // 用户登出

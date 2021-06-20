@@ -1,4 +1,4 @@
-package com.example.bookstore.util;
+package com.example.bookstore.util.adapter;
 
 import android.content.Context;
 

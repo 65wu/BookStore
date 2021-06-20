@@ -1,4 +1,4 @@
-package com.example.bookstore.util;
+package com.example.bookstore.util.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -8,19 +8,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.R;
 import com.example.bookstore.ui.SearchActivity;
+import com.example.bookstore.util.FileHelper;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-
-import es.dmoral.toasty.Toasty;
 
 public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.ViewHolder>{
     private final Context context;

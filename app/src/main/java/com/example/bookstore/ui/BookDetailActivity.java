@@ -20,7 +20,7 @@ import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.entity.Comment;
 import com.example.bookstore.util.FileHelper;
-import com.example.bookstore.util.RecyclerviewLoader;
+import com.example.bookstore.util.adapter.RecyclerviewLoader;
 
 import java.util.Date;
 import java.util.List;

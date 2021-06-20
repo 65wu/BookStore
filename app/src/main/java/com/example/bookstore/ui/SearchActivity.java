@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookstore.R;
 import com.example.bookstore.db.BookStoreDataBase;
-import com.example.bookstore.util.RecyclerviewLoader;
-import com.example.bookstore.util.SearchButtonClick;
+import com.example.bookstore.util.adapter.RecyclerviewLoader;
+import com.example.bookstore.util.include.SearchButtonClick;
 
 public class SearchActivity extends AppCompatActivity {
     private final RecyclerviewLoader recyclerviewLoader = new RecyclerviewLoader(this);

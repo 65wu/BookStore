@@ -18,7 +18,7 @@ import com.example.bookstore.R;
 import com.example.bookstore.db.BookStoreDataBase;
 import com.example.bookstore.entity.Category;
 import com.example.bookstore.util.FileHelper;
-import com.example.bookstore.util.TopBarCustomer;
+import com.example.bookstore.util.include.TopBarCustomer;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package com.example.bookstore.util;
+package com.example.bookstore.util.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.bookstore.R;
 import com.example.bookstore.entity.Book;
 import com.example.bookstore.ui.BookDetailActivity;
+import com.example.bookstore.util.FileHelper;
 
 import org.jetbrains.annotations.NotNull;
 
