@@ -14,8 +14,7 @@
         android:paddingStart="8dp"
         android:paddingEnd="0dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:src="@drawable/img_thumbnail" />
+        android:paddingBottom="8dp"/>
 
 
     <TextView

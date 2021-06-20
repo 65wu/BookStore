@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
-        android:layout_marginTop="5dp"
-        android:src="@drawable/image_featured_news" />
+        android:layout_marginTop="5dp"/>
 
     <TextView
         style="@style/miniTitle"

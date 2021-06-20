@@ -73,7 +73,8 @@ public class BooksAddActivity extends AppCompatActivity {
 
         // 如果是修改图书，装入之前的数据
         if(if_edit) {
-            image_button.setImageBitmap(fileHelper.loadImageBitmap(this, "book", i.getStringExtra("book_id")));
+            selectedImage = fileHelper.loadImageBitmap(this, "book", i.getStringExtra("book_id"));
+            image_button.setImageBitmap(selectedImage);
             TextView image_text = findViewById(R.id.add_image_text);
             image_text.setText("修改图书图片");
             submit_button.setText("修改");
