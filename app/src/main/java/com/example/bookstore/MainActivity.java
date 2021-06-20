@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
         videoPlayer = findViewById(R.id.video_player);
 
         String source1 = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
-        videoPlayer.setUp(source1, true, "测试视频");
+        videoPlayer.setUp(source1, true, "书店介绍");
 
         //增加封面
         ImageView imageView = new ImageView(this);
@@ -178,22 +178,20 @@ public class MainActivity extends AppCompatActivity {
         //设置旋转
         orientationUtils = new OrientationUtils(this, videoPlayer);
         //设置全屏按键功能,这是使用的是选择屏幕，而不是全屏
-        videoPlayer.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                orientationUtils.resolveByClick();
-            }
-        });
+        videoPlayer.getFullscreenButton().setOnClickListener(v -> orientationUtils.resolveByClick());
         //是否可以滑动调整
         videoPlayer.setIsTouchWiget(true);
         //设置返回按键功能
-        videoPlayer.getBackButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+        videoPlayer.getBackButton().setOnClickListener(v -> onBackPressed());
         videoPlayer.startPlayLogic();
+        //是否根据视频尺寸，自动选择竖屏全屏或者横屏全屏
+        videoPlayer.setAutoFullWithSize(true);
+        //音频焦点冲突时是否释放
+        videoPlayer.setReleaseWhenLossAudio(false);
+        //全屏动画
+        videoPlayer.setShowFullAnimation(true);
+        //小屏时不触摸滑动
+        videoPlayer.setIsTouchWiget(false);
     }
 
     @Override
