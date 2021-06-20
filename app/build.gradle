@@ -81,4 +81,7 @@ dependencies {
 
     // custom spinner
     implementation "com.github.skydoves:powerspinner:1.1.7"
+
+    // JZVideo
+    implementation 'cn.jzvd:jiaozivideoplayer:7.6.0'
 }

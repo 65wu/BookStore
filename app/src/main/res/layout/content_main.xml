@@ -19,18 +19,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="#EEEEEE">
-
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categories_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp">
+                android:layout_marginBottom="5dp">
             </androidx.recyclerview.widget.RecyclerView>
 
-            <include layout="@layout/layout_featured_news"/>
+            <cn.jzvd.JzvdStd
+                android:id="@+id/jz_video"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/books_list"

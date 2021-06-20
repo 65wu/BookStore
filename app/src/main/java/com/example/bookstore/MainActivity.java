@@ -31,6 +31,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Date;
 
+import cn.jzvd.Jzvd;
 import cn.leancloud.AVUser;
 
 public class MainActivity extends AppCompatActivity {
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.setBehavior(new BottomNavigationBehavior());
 
         bottomNavigationView.setSelectedItemId(R.id.navigationHome);
+
     }
 
     // 用户登出
@@ -151,5 +153,17 @@ public class MainActivity extends AppCompatActivity {
     public void addNewBookCategory(MenuItem menuItem) {
         Intent intent = new Intent(this, BookCategoriesAddActivity.class);
         startActivity(intent);
+    }
+    @Override
+    public void onBackPressed() {
+        if (Jzvd.backPress()) {
+            return;
+        }
+        super.onBackPressed();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Jzvd.releaseAllVideos();
     }
 }
